@@ -1,0 +1,68 @@
+<div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-white rounded-lg shadow-lg p-10 space-y-8">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-gray-900">Create Your Account</h2>
+      <p class="mt-2 text-sm text-gray-600">Ready to list your startup's leftovers?</p>
+    </div>
+
+    <%= button_to user_google_oauth2_omniauth_authorize_path, 
+        data: { turbo: false },
+        class: "w-full flex items-center justify-center gap-3 bg-white px-6 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200" do %>
+      <%= image_tag "https://www.google.com/favicon.ico", class: "w-5 h-5" %>
+      Sign up with Google
+    <% end %>
+
+    <div class="relative my-8">
+      <div class="absolute inset-0 flex items-center">
+        <div class="w-full border-t border-gray-300"></div>
+      </div>
+      <div class="relative flex justify-center text-sm">
+        <span class="px-4 bg-white text-gray-500">Or continue with email</span>
+      </div>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), 
+        html: { class: "space-y-6 mb-6" }) do |f| %>
+      
+      <div class="space-y-2">
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",
+              class: "appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors duration-200" %>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.password_field :password, autocomplete: "new-password",
+              class: "appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors duration-200" %>
+          <% if @minimum_password_length %>
+            <p class="mt-2 text-sm text-gray-500">Minimum <%= @minimum_password_length %> characters</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",
+              class: "appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors duration-200" %>
+        </div>
+      </div>
+
+      <%= f.submit "Sign up", 
+          class: "w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 mt-8" %>
+    <% end %>
+
+    <div class="mt-8 text-center text-sm">
+      <p class="text-gray-600">
+        Already have an account?
+        <%= link_to "Sign in", new_session_path(resource_name), 
+            class: "font-medium text-indigo-600 hover:text-indigo-500 ml-1" %>
+      </p>
+    </div>
+
+    <%= render "devise/shared/error_messages" %>
+  </div>
+</div> 

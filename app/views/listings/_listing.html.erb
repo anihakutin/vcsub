@@ -1,0 +1,24 @@
+<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+  <% if listing.images.attached? %>
+    <%= image_tag listing.images.first.variant(:thumb), 
+        class: "w-full h-48 object-contain rounded-lg mb-4 mx-auto" %>
+  <% end %>
+  
+  <h3 class="text-xl font-semibold"><%= listing.title %></h3>
+  <% if listing.user.company_name.present? %>
+    <p class="text-sm text-gray-500 mt-1">by <%= listing.user.company_name %></p>
+  <% end %>
+  <p class="text-gray-600 mt-2"><%= truncate(listing.description, length: 150) %></p>
+  <p class="text-indigo-600 font-bold mt-4">$<%= number_with_delimiter(listing.price) %></p>
+  
+  <div class="mt-4 flex justify-between items-center">
+    <%= link_to "View Details", listing_path(listing), class: "text-indigo-600 hover:text-indigo-800" %>
+    
+    <div class="text-right">
+      <span class="text-sm text-gray-500"><%= listing.category %></span>
+      <% if listing.city.present? && listing.state.present? %>
+        <p class="text-sm text-gray-500 mt-1"><%= "#{listing.city}, #{listing.state}" %></p>
+      <% end %>
+    </div>
+  </div>
+</div> 

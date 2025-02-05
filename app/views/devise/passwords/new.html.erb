@@ -1,0 +1,33 @@
+<div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-white rounded-lg shadow-lg p-10 space-y-8">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-gray-900">Reset Password</h2>
+      <p class="mt-2 text-sm text-gray-600">We'll send you instructions to reset your password</p>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), 
+        html: { method: :post, class: "space-y-6 mb-6" }) do |f| %>
+      
+      <div class="space-y-2">
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",
+              class: "appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors duration-200" %>
+        </div>
+      </div>
+
+      <%= f.submit "Send reset instructions", 
+          class: "w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 mt-8" %>
+    <% end %>
+
+    <div class="mt-8 text-center text-sm">
+      <p class="text-gray-600">
+        Remember your password?
+        <%= link_to "Sign in", new_session_path(resource_name), 
+            class: "font-medium text-indigo-600 hover:text-indigo-500 ml-1" %>
+      </p>
+    </div>
+
+    <%= render "devise/shared/error_messages" %>
+  </div>
+</div> 

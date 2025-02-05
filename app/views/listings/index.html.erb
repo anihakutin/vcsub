@@ -1,0 +1,61 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold">Fire Sale Items</h1>
+    <%= link_to "List New Item", new_listing_path, class: "inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700" %>
+  </div>
+
+  <div class="mb-8 bg-white rounded-lg shadow-sm p-6">
+    <h2 class="text-lg font-medium text-gray-900 mb-4">Filter Listings</h2>
+    <%= form_with(url: listings_path, method: :get, class: "grid grid-cols-1 md:grid-cols-3 gap-4", data: { turbo_frame: "listings" }) do |f| %>
+      <div>
+        <%= f.label :city, class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= f.select :city, 
+            options_for_select(@cities, params[:city]),
+            { include_blank: "All Cities" },
+            class: "block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+      </div>
+      
+      <div>
+        <%= f.label :state, class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= f.select :state, 
+            options_for_select(us_states_options, params[:state]),
+            { include_blank: "All States" },
+            class: "block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+      </div>
+
+      <div class="flex items-end">
+        <%= f.submit "Apply Filters", 
+            class: "w-full bg-indigo-600 border border-transparent rounded-lg py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <% @listings.each do |listing| %>
+      <%= render partial: "listing", locals: { listing: listing } %>
+    <% end %>
+  </div>
+
+  <% if @listings.total_pages > 1 %>
+    <div class="mt-8 flex justify-center">
+      <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+        <%= link_to_prev_page @listings, 'Previous', 
+            class: "relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" %>
+        
+        <% @listings.total_pages.times do |i| %>
+          <% if @listings.current_page == i + 1 %>
+            <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-indigo-50 text-sm font-medium text-indigo-600">
+              <%= i + 1 %>
+            </span>
+          <% else %>
+            <%= link_to i + 1, listings_path(page: i + 1), 
+                class: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50" %>
+          <% end %>
+        <% end %>
+        
+        <%= link_to_next_page @listings, 'Next', 
+            class: "relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" %>
+      </nav>
+    </div>
+  <% end %>
+</div> 
