@@ -24,4 +24,7 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { host: 'vcsubsidized.com' }
+
+  Rails.application.routes.default_url_options[:host] = 'vcsubsidized.com'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
 end 

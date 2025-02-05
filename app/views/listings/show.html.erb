@@ -41,7 +41,7 @@
         <div class="space-y-6">
           <% if @listing.images.attached? %>
             <div class="aspect-w-4 aspect-h-3">
-              <%= image_tag @listing.images.first, 
+              <%= image_tag @listing.image_urls.first, 
                   class: "w-full h-full object-contain rounded-lg" %>
             </div>
           <% end %>

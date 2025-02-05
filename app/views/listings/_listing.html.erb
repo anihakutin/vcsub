@@ -1,7 +1,9 @@
 <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
   <% if listing.images.attached? %>
-    <%= image_tag listing.images.first.variant(:thumb), 
-        class: "w-full h-48 object-contain rounded-lg mb-4 mx-auto" %>
+    <div class="aspect-w-4 aspect-h-3">
+      <%= image_tag listing.image_urls.first,
+          class: "w-full h-full object-cover rounded-lg" %>
+    </div>
   <% end %>
   
   <h3 class="text-xl font-semibold"><%= listing.title %></h3>
