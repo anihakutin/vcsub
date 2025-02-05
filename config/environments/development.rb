@@ -58,4 +58,10 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  Rails.application.routes.default_url_options = {
+    host: 'localhost',
+    port: 3000,
+    protocol: 'http'
+  }
 end 

@@ -10416,3 +10416,696 @@ I, [2025-02-05T12:14:47.741567 #40529]  INFO -- :   Rendered layout layouts/appl
 I, [2025-02-05T12:14:47.741715 #40529]  INFO -- : Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 0.9ms | Allocations: 6743)
 
 
+D, [2025-02-05T12:52:03.141705 #46841] DEBUG -- : [dotenv] Set [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mAWS_ACCESS_KEY_ID[0m, [36mAWS_SECRET_ACCESS_KEY[0m, [36mAWS_REGION[0m, and [36mAWS_BUCKET[0m
+I, [2025-02-05T12:52:03.143865 #46841]  INFO -- : [dotenv] Loaded [33m.env[0m
+W, [2025-02-05T12:52:03.198173 #46841]  WARN -- : DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /Users/heshie/Development/vc_sub/config/environment.rb:5)
+I, [2025-02-05T12:52:23.130652 #46841]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:52:23 -0500
+D, [2025-02-05T12:52:23.440938 #46841] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+I, [2025-02-05T12:52:23.472980 #46841]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:52:23.560513 #46841] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:52:23.560671 #46841] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:52:23.566065 #46841] DEBUG -- :   [1m[36mListing Load (1.0ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:52:23.585431 #46841] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:52:23.619987 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:52:23.620623 #46841] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:52:23.621351 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:52:23.621763 #46841] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:52:23.867136 #46841] DEBUG -- :   [1m[36mActiveStorage::Blob Load (2.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:52:23.867755 #46841] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:52:23.881270 #46841] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 278.1ms | Allocations: 141536)
+I, [2025-02-05T12:52:23.881429 #46841]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 320.7ms | Allocations: 153695)
+I, [2025-02-05T12:52:23.881496 #46841]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 320.9ms | Allocations: 153820)
+I, [2025-02-05T12:52:23.883003 #46841]  INFO -- : Completed 500 Internal Server Error in 408ms (ActiveRecord: 35.3ms | Allocations: 167850)
+
+
+F, [2025-02-05T12:52:23.900073 #46841] FATAL -- : 
+ArgumentError - Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true:
+  app/models/listing.rb:22:in `block in image_urls'
+  app/models/listing.rb:21:in `image_urls'
+  app/views/listings/_listing.html.erb:4
+  app/views/home/index.html.erb:28
+  app/views/home/index.html.erb:27
+
+I, [2025-02-05T12:52:23.935559 #46841]  INFO -- : Started POST "/__better_errors/e7f5031751701220/variables" for ::1 at 2025-02-05 12:52:23 -0500
+D, [2025-02-05T12:52:23.949136 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 /* loading for inspect */ LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 11]]
+D, [2025-02-05T12:52:23.949646 #46841] DEBUG -- :   ↳ (eval):73:in `block in render_template'
+I, [2025-02-05T12:53:38.896944 #46841]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:53:38 -0500
+I, [2025-02-05T12:53:38.922695 #46841]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:53:38.945270 #46841] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:38.946032 #46841] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:53:38.963377 #46841] DEBUG -- :   [1m[36mListing Load (2.3ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:38.965308 #46841] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:53:38.973920 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:38.974882 #46841] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:38.975842 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:38.976407 #46841] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:38.978227 #46841] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:38.978984 #46841] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:38.982682 #46841] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 15.1ms | Allocations: 4457)
+I, [2025-02-05T12:53:38.982812 #46841]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 36.4ms | Allocations: 5166)
+I, [2025-02-05T12:53:38.982886 #46841]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 5265)
+I, [2025-02-05T12:53:38.983159 #46841]  INFO -- : Completed 500 Internal Server Error in 60ms (ActiveRecord: 4.8ms | Allocations: 5590)
+
+
+F, [2025-02-05T12:53:39.004469 #46841] FATAL -- : 
+ArgumentError - Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true:
+  app/models/listing.rb:22:in `block in image_urls'
+  app/models/listing.rb:21:in `image_urls'
+  app/views/listings/_listing.html.erb:4
+  app/views/home/index.html.erb:28
+  app/views/home/index.html.erb:27
+
+I, [2025-02-05T12:53:39.107231 #46841]  INFO -- : Started POST "/__better_errors/68b926deb84ab2af/variables" for ::1 at 2025-02-05 12:53:39 -0500
+D, [2025-02-05T12:53:39.150241 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 /* loading for inspect */ LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 11]]
+D, [2025-02-05T12:53:39.151830 #46841] DEBUG -- :   ↳ (eval):73:in `block in render_template'
+I, [2025-02-05T12:53:40.549932 #46841]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:53:40 -0500
+I, [2025-02-05T12:53:40.576093 #46841]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:53:40.577468 #46841] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:40.577723 #46841] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:53:40.579445 #46841] DEBUG -- :   [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:40.580143 #46841] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:53:40.582087 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:40.582573 #46841] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:40.583298 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:40.583954 #46841] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:40.585122 #46841] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:40.587279 #46841] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:40.588824 #46841] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 8.1ms | Allocations: 4449)
+I, [2025-02-05T12:53:40.588938 #46841]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 5151)
+I, [2025-02-05T12:53:40.589027 #46841]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 5250)
+I, [2025-02-05T12:53:40.589169 #46841]  INFO -- : Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.5ms | Allocations: 5567)
+
+
+F, [2025-02-05T12:53:40.615059 #46841] FATAL -- : 
+ArgumentError - Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true:
+  app/models/listing.rb:22:in `block in image_urls'
+  app/models/listing.rb:21:in `image_urls'
+  app/views/listings/_listing.html.erb:4
+  app/views/home/index.html.erb:28
+  app/views/home/index.html.erb:27
+
+I, [2025-02-05T12:53:40.642798 #46841]  INFO -- : Started POST "/__better_errors/3d167ffff62dcf6c/variables" for ::1 at 2025-02-05 12:53:40 -0500
+D, [2025-02-05T12:53:40.651611 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 /* loading for inspect */ LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 11]]
+D, [2025-02-05T12:53:40.652559 #46841] DEBUG -- :   ↳ (eval):73:in `block in render_template'
+I, [2025-02-05T12:53:41.167753 #46841]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:53:41 -0500
+I, [2025-02-05T12:53:41.183651 #46841]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:53:41.187971 #46841] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:41.188335 #46841] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:53:41.196210 #46841] DEBUG -- :   [1m[36mListing Load (0.9ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:41.199512 #46841] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:53:41.203647 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:41.205024 #46841] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:41.206696 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:41.207374 #46841] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:41.209207 #46841] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:41.209985 #46841] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:41.211874 #46841] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 10.9ms | Allocations: 4449)
+I, [2025-02-05T12:53:41.212003 #46841]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 20.9ms | Allocations: 5151)
+I, [2025-02-05T12:53:41.212094 #46841]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 5250)
+I, [2025-02-05T12:53:41.212792 #46841]  INFO -- : Completed 500 Internal Server Error in 28ms (ActiveRecord: 3.1ms | Allocations: 5567)
+
+
+F, [2025-02-05T12:53:41.233489 #46841] FATAL -- : 
+ArgumentError - Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true:
+  app/models/listing.rb:22:in `block in image_urls'
+  app/models/listing.rb:21:in `image_urls'
+  app/views/listings/_listing.html.erb:4
+  app/views/home/index.html.erb:28
+  app/views/home/index.html.erb:27
+
+I, [2025-02-05T12:53:41.260055 #46841]  INFO -- : Started POST "/__better_errors/83a3e8118eb3de35/variables" for ::1 at 2025-02-05 12:53:41 -0500
+D, [2025-02-05T12:53:41.270358 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 /* loading for inspect */ LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 11]]
+D, [2025-02-05T12:53:41.270958 #46841] DEBUG -- :   ↳ (eval):73:in `block in render_template'
+I, [2025-02-05T12:53:41.346733 #46841]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:53:41 -0500
+I, [2025-02-05T12:53:41.351945 #46841]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:53:41.352486 #46841] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:41.352565 #46841] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:53:41.353718 #46841] DEBUG -- :   [1m[36mListing Load (0.4ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:41.354360 #46841] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:53:41.356884 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:41.357391 #46841] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:41.358098 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:41.358576 #46841] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:41.359877 #46841] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:41.360425 #46841] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:41.361610 #46841] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 6.9ms | Allocations: 4446)
+I, [2025-02-05T12:53:41.361697 #46841]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 5143)
+I, [2025-02-05T12:53:41.361756 #46841]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 5242)
+I, [2025-02-05T12:53:41.361859 #46841]  INFO -- : Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.8ms | Allocations: 5549)
+
+
+F, [2025-02-05T12:53:41.375125 #46841] FATAL -- : 
+ArgumentError - Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true:
+  app/models/listing.rb:22:in `block in image_urls'
+  app/models/listing.rb:21:in `image_urls'
+  app/views/listings/_listing.html.erb:4
+  app/views/home/index.html.erb:28
+  app/views/home/index.html.erb:27
+
+I, [2025-02-05T12:53:41.396900 #46841]  INFO -- : Started POST "/__better_errors/463c578c31ea03fe/variables" for ::1 at 2025-02-05 12:53:41 -0500
+D, [2025-02-05T12:53:41.407059 #46841] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 /* loading for inspect */ LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 11]]
+D, [2025-02-05T12:53:41.407569 #46841] DEBUG -- :   ↳ (eval):73:in `block in render_template'
+D, [2025-02-05T12:53:47.776541 #48154] DEBUG -- : [dotenv] Set [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mAWS_ACCESS_KEY_ID[0m, [36mAWS_SECRET_ACCESS_KEY[0m, [36mAWS_REGION[0m, and [36mAWS_BUCKET[0m
+I, [2025-02-05T12:53:47.778479 #48154]  INFO -- : [dotenv] Loaded [33m.env[0m
+W, [2025-02-05T12:53:47.828086 #48154]  WARN -- : DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /Users/heshie/Development/vc_sub/config/environment.rb:5)
+I, [2025-02-05T12:53:48.762777 #48154]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:53:48 -0500
+D, [2025-02-05T12:53:48.835934 #48154] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+I, [2025-02-05T12:53:48.853129 #48154]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:53:48.924334 #48154] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:48.924466 #48154] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:53:48.937884 #48154] DEBUG -- :   [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:48.938372 #48154] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:53:48.966783 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:48.967204 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:48.967799 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:48.968259 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:49.120055 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.120551 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.129948 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.130386 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.131692 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.132081 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.142975 #48154] DEBUG -- :   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.143369 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:53:49.155924 #48154] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 205.4ms | Allocations: 155021)
+D, [2025-02-05T12:53:49.157502 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.157876 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:49.158462 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:49.159193 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:49.160113 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.160527 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.161442 #48154] DEBUG -- :   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.161764 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:53:49.162198 #48154] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 6.0ms | Allocations: 2930)
+D, [2025-02-05T12:53:49.163173 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.163455 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:49.164765 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:49.165579 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:49.166180 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.166551 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.167318 #48154] DEBUG -- :   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.168131 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:53:49.168404 #48154] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 6.1ms | Allocations: 2737)
+D, [2025-02-05T12:53:49.169905 #48154] DEBUG -- :   [1m[36mRequest Load (1.0ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:49.170241 #48154] DEBUG -- :   ↳ app/views/home/index.html.erb:40
+D, [2025-02-05T12:53:49.181980 #48154] DEBUG -- :   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.182250 #48154] DEBUG -- :   ↳ app/views/requests/_request.html.erb:5
+D, [2025-02-05T12:53:49.182585 #48154] DEBUG -- :   Rendered requests/_request.html.erb (Duration: 2.7ms | Allocations: 4447)
+I, [2025-02-05T12:53:49.182657 #48154]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 258.1ms | Allocations: 182770)
+D, [2025-02-05T12:53:49.241176 #48154] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.242941 #48154] DEBUG -- :   ↳ app/views/shared/_navigation.html.erb:17
+D, [2025-02-05T12:53:49.246498 #48154] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 8.2ms | Allocations: 1753)
+I, [2025-02-05T12:53:49.246657 #48154]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 322.2ms | Allocations: 214739)
+I, [2025-02-05T12:53:49.248218 #48154]  INFO -- : Completed 200 OK in 394ms (Views: 296.3ms | ActiveRecord: 37.1ms | Allocations: 228708)
+
+
+I, [2025-02-05T12:53:49.275552 #48154]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:53:49 -0500
+I, [2025-02-05T12:53:49.285859 #48154]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:53:49.286444 #48154] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:49.287921 #48154] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:53:49.323933 #48154] DEBUG -- :   [1m[36mListing Load (0.8ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:49.324415 #48154] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:53:49.326310 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.326714 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:49.328588 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:49.329111 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:49.330179 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.330607 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.331639 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.332505 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.333931 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.334325 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.335401 #48154] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.335725 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:53:49.336139 #48154] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 11.3ms | Allocations: 4522)
+D, [2025-02-05T12:53:49.337187 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.337473 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:49.341784 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (3.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:49.342157 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:49.342756 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.343187 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.344150 #48154] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.344447 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:53:49.344758 #48154] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 8.5ms | Allocations: 2871)
+D, [2025-02-05T12:53:49.345798 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.346070 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:53:49.347745 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:49.348103 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:49.348639 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.349012 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:49.349520 #48154] DEBUG -- :   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.349749 #48154] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:53:49.349983 #48154] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 5.1ms | Allocations: 2726)
+D, [2025-02-05T12:53:49.350615 #48154] DEBUG -- :   [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:53:49.350912 #48154] DEBUG -- :   ↳ app/views/home/index.html.erb:40
+D, [2025-02-05T12:53:49.351304 #48154] DEBUG -- :   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.351635 #48154] DEBUG -- :   ↳ app/views/requests/_request.html.erb:5
+D, [2025-02-05T12:53:49.352046 #48154] DEBUG -- :   Rendered requests/_request.html.erb (Duration: 0.9ms | Allocations: 563)
+I, [2025-02-05T12:53:49.352343 #48154]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 64.4ms | Allocations: 12170)
+D, [2025-02-05T12:53:49.356737 #48154] DEBUG -- :   [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.357181 #48154] DEBUG -- :   ↳ app/views/shared/_navigation.html.erb:17
+D, [2025-02-05T12:53:49.357849 #48154] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 3.7ms | Allocations: 1074)
+I, [2025-02-05T12:53:49.357962 #48154]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 70.1ms | Allocations: 15106)
+I, [2025-02-05T12:53:49.358130 #48154]  INFO -- : Completed 200 OK in 72ms (Views: 58.6ms | ActiveRecord: 13.2ms | Allocations: 15441)
+
+
+I, [2025-02-05T12:53:49.375608 #48154]  INFO -- : Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MywicHVyIjoiYmxvYl9pZCJ9fQ==--ec9a6e0f6b2b78babbd22455cc40d0ef7bd69185/Group%20of%20solid%20dudes.jpeg" for ::1 at 2025-02-05 12:53:49 -0500
+I, [2025-02-05T12:53:49.375920 #48154]  INFO -- : Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTMsInB1ciI6ImJsb2JfaWQifX0=--5960b83db3dfbed25bab86200d1c515fd7b25255/Screenshot%202025-02-05%20at%2010.58.29%E2%80%AFAM.png" for ::1 at 2025-02-05 12:53:49 -0500
+I, [2025-02-05T12:53:49.376091 #48154]  INFO -- : Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NiwicHVyIjoiYmxvYl9pZCJ9fQ==--ca82b100eb9013b6a080889365828f252ffa2af1/Screenshot%202025-02-04%20at%2011.50.15%E2%80%AFPM.png" for ::1 at 2025-02-05 12:53:49 -0500
+I, [2025-02-05T12:53:49.406565 #48154]  INFO -- : Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+I, [2025-02-05T12:53:49.407188 #48154]  INFO -- : Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+I, [2025-02-05T12:53:49.406897 #48154]  INFO -- : Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+I, [2025-02-05T12:53:49.407246 #48154]  INFO -- :   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6NiwicHVyIjoiYmxvYl9pZCJ9fQ==--ca82b100eb9013b6a080889365828f252ffa2af1", "filename"=>"Screenshot 2025-02-04 at 11.50.15 PM"}
+I, [2025-02-05T12:53:49.407327 #48154]  INFO -- :   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTMsInB1ciI6ImJsb2JfaWQifX0=--5960b83db3dfbed25bab86200d1c515fd7b25255", "filename"=>"Screenshot 2025-02-05 at 10.58.29 AM"}
+I, [2025-02-05T12:53:49.407400 #48154]  INFO -- :   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MywicHVyIjoiYmxvYl9pZCJ9fQ==--ec9a6e0f6b2b78babbd22455cc40d0ef7bd69185", "filename"=>"Group of solid dudes"}
+D, [2025-02-05T12:53:49.411171 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.415337 #48154] DEBUG -- : [36m  S3 Storage (1.9ms) [0m[34mGenerated URL for file at key: u8iw4s7lkr2z2ggr9ikcr0ycn4i1 (https://vcsub.s3.amazonaws.com/u8iw4s7lkr2z2ggr9ikcr0ycn4i1)[0m
+I, [2025-02-05T12:53:49.415545 #48154]  INFO -- : Redirected to https://vcsub.s3.amazonaws.com/u8iw4s7lkr2z2ggr9ikcr0ycn4i1
+I, [2025-02-05T12:53:49.415676 #48154]  INFO -- : Completed 302 Found in 8ms (ActiveRecord: 0.3ms | Allocations: 5965)
+
+
+D, [2025-02-05T12:53:49.469072 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.469178 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+D, [2025-02-05T12:53:49.471024 #48154] DEBUG -- : [36m  S3 Storage (0.1ms) [0m[34mGenerated URL for file at key: bya5jibafwvtober8yzwesn5jzro (https://vcsub.s3.amazonaws.com/bya5jibafwvtober8yzwesn5jzro)[0m
+D, [2025-02-05T12:53:49.472791 #48154] DEBUG -- : [36m  S3 Storage (0.1ms) [0m[34mGenerated URL for file at key: qnl3rvjewpym4js03c0j9vaoonmk (https://vcsub.s3.amazonaws.com/qnl3rvjewpym4js03c0j9vaoonmk)[0m
+I, [2025-02-05T12:53:49.472962 #48154]  INFO -- : Redirected to https://vcsub.s3.amazonaws.com/bya5jibafwvtober8yzwesn5jzro
+I, [2025-02-05T12:53:49.473181 #48154]  INFO -- : Completed 302 Found in 65ms (ActiveRecord: 5.4ms | Allocations: 12105)
+
+
+I, [2025-02-05T12:53:49.473073 #48154]  INFO -- : Redirected to https://vcsub.s3.amazonaws.com/qnl3rvjewpym4js03c0j9vaoonmk
+I, [2025-02-05T12:53:49.473327 #48154]  INFO -- : Completed 302 Found in 65ms (ActiveRecord: 5.3ms | Allocations: 12041)
+
+
+I, [2025-02-05T12:53:49.682938 #48154]  INFO -- : Started GET "/favicon.ico" for ::1 at 2025-02-05 12:53:49 -0500
+E, [2025-02-05T12:53:49.704512 #48154] ERROR -- :   
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+I, [2025-02-05T12:53:53.368799 #48154]  INFO -- : Started GET "/listings/5" for ::1 at 2025-02-05 12:53:53 -0500
+I, [2025-02-05T12:53:53.399951 #48154]  INFO -- : Processing by ListingsController#show as HTML
+I, [2025-02-05T12:53:53.400189 #48154]  INFO -- :   Parameters: {"id"=>"5"}
+D, [2025-02-05T12:53:53.404188 #48154] DEBUG -- :   [1m[36mListing Load (0.9ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.404713 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:53:53.407192 #48154] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:53.407327 #48154] DEBUG -- :   Rendering listings/show.html.erb within layouts/application
+D, [2025-02-05T12:53:53.412044 #48154] DEBUG -- :   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.412667 #48154] DEBUG -- :   ↳ app/views/listings/show.html.erb:21
+D, [2025-02-05T12:53:53.414405 #48154] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.414825 #48154] DEBUG -- :   ↳ app/views/listings/show.html.erb:21
+D, [2025-02-05T12:53:53.418829 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.419214 #48154] DEBUG -- :   ↳ app/views/listings/show.html.erb:42
+D, [2025-02-05T12:53:53.420798 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:53.421348 #48154] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:53:53.423618 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.424182 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:53.425374 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.426117 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:53:53.427232 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+D, [2025-02-05T12:53:53.427878 #48154] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+I, [2025-02-05T12:53:53.429174 #48154]  INFO -- :   Rendered listings/show.html.erb within layouts/application (Duration: 21.7ms | Allocations: 6853)
+D, [2025-02-05T12:53:53.431888 #48154] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 0.5ms | Allocations: 366)
+I, [2025-02-05T12:53:53.432028 #48154]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 8843)
+I, [2025-02-05T12:53:53.432246 #48154]  INFO -- : Completed 200 OK in 32ms (Views: 19.6ms | ActiveRecord: 7.1ms | Allocations: 11259)
+
+
+I, [2025-02-05T12:53:54.783653 #48154]  INFO -- : Started GET "/listings/5/edit" for ::1 at 2025-02-05 12:53:54 -0500
+I, [2025-02-05T12:53:54.804582 #48154]  INFO -- : Processing by ListingsController#edit as HTML
+I, [2025-02-05T12:53:54.804864 #48154]  INFO -- :   Parameters: {"id"=>"5"}
+D, [2025-02-05T12:53:54.809304 #48154] DEBUG -- :   [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.810176 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:53:54.813083 #48154] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.818325 #48154] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:53:54.818544 #48154] DEBUG -- :   Rendering listings/edit.html.erb within layouts/application
+D, [2025-02-05T12:53:54.831492 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.832452 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:45
+D, [2025-02-05T12:53:54.833326 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:53:54.834007 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:47
+D, [2025-02-05T12:53:54.835260 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.835845 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:49
+D, [2025-02-05T12:53:54.841210 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (1.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.841810 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:49
+D, [2025-02-05T12:53:54.843104 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.843679 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:49
+D, [2025-02-05T12:53:54.851115 #48154] DEBUG -- :   Rendered listings/_form.html.erb (Duration: 30.7ms | Allocations: 9617)
+I, [2025-02-05T12:53:54.851286 #48154]  INFO -- :   Rendered listings/edit.html.erb within layouts/application (Duration: 32.6ms | Allocations: 9861)
+D, [2025-02-05T12:53:54.854634 #48154] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 0.7ms | Allocations: 374)
+I, [2025-02-05T12:53:54.854803 #48154]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 36.3ms | Allocations: 11852)
+I, [2025-02-05T12:53:54.855037 #48154]  INFO -- : Completed 200 OK in 48ms (Views: 34.0ms | ActiveRecord: 3.9ms | Allocations: 14128)
+
+
+I, [2025-02-05T12:53:54.899697 #48154]  INFO -- : Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTMsInB1ciI6ImJsb2JfaWQifX0=--5960b83db3dfbed25bab86200d1c515fd7b25255/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3/Screenshot%202025-02-05%20at%2010.58.29%E2%80%AFAM.png" for ::1 at 2025-02-05 12:53:54 -0500
+I, [2025-02-05T12:53:54.902307 #48154]  INFO -- : Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTQsInB1ciI6ImJsb2JfaWQifX0=--b60d941da0c18be8f236f386a84558e06ff44827/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3/Screenshot%202025-02-05%20at%2010.58.44%E2%80%AFAM.png" for ::1 at 2025-02-05 12:53:54 -0500
+I, [2025-02-05T12:53:54.902952 #48154]  INFO -- : Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUsInB1ciI6ImJsb2JfaWQifX0=--fee69a2f025ff6e7422fb03dbb387d1077bb10d5/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3/Screenshot%202025-02-05%20at%2010.58.57%E2%80%AFAM.png" for ::1 at 2025-02-05 12:53:54 -0500
+I, [2025-02-05T12:53:54.928920 #48154]  INFO -- : Processing by ActiveStorage::Representations::RedirectController#show as PNG
+I, [2025-02-05T12:53:54.929256 #48154]  INFO -- : Processing by ActiveStorage::Representations::RedirectController#show as PNG
+I, [2025-02-05T12:53:54.929986 #48154]  INFO -- :   Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTMsInB1ciI6ImJsb2JfaWQifX0=--5960b83db3dfbed25bab86200d1c515fd7b25255", "variation_key"=>"eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3", "filename"=>"Screenshot 2025-02-05 at 10.58.29 AM"}
+I, [2025-02-05T12:53:54.930076 #48154]  INFO -- :   Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTUsInB1ciI6ImJsb2JfaWQifX0=--fee69a2f025ff6e7422fb03dbb387d1077bb10d5", "variation_key"=>"eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3", "filename"=>"Screenshot 2025-02-05 at 10.58.57 AM"}
+I, [2025-02-05T12:53:54.929905 #48154]  INFO -- : Processing by ActiveStorage::Representations::RedirectController#show as PNG
+I, [2025-02-05T12:53:54.931211 #48154]  INFO -- :   Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTQsInB1ciI6ImJsb2JfaWQifX0=--b60d941da0c18be8f236f386a84558e06ff44827", "variation_key"=>"eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3", "filename"=>"Screenshot 2025-02-05 at 10.58.44 AM"}
+D, [2025-02-05T12:53:54.932473 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.935319 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (3.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.935475 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (3.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.956446 #48154] DEBUG -- :   [1m[36mActiveStorage::VariantRecord Load (2.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 15], ["variation_digest", "SddQy7MtP5tRaCZn0MdARdfn0f4="], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.959092 #48154] DEBUG -- :   [1m[36mActiveStorage::VariantRecord Load (4.6ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 13], ["variation_digest", "SddQy7MtP5tRaCZn0MdARdfn0f4="], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.959179 #48154] DEBUG -- :   [1m[36mActiveStorage::VariantRecord Load (4.5ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 14], ["variation_digest", "SddQy7MtP5tRaCZn0MdARdfn0f4="], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.973991 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.974119 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.977747 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (4.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.979104 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.979201 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (3.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+D, [2025-02-05T12:53:54.981392 #48154] DEBUG -- : [36m  S3 Storage (0.1ms) [0m[34mGenerated URL for file at key: f9yckp2rqw4cjxem9zru1dklu7pc (https://vcsub.s3.amazonaws.com/f9yckp2rqw4cjxem9zru1dklu7pc)[0m
+D, [2025-02-05T12:53:54.982510 #48154] DEBUG -- : [36m  S3 Storage (0.1ms) [0m[34mGenerated URL for file at key: tkegzmcsr944vboia54eo5c8ylcl (https://vcsub.s3.amazonaws.com/tkegzmcsr944vboia54eo5c8ylcl)[0m
+I, [2025-02-05T12:53:54.982758 #48154]  INFO -- : Redirected to https://vcsub.s3.amazonaws.com/tkegzmcsr944vboia54eo5c8ylcl
+I, [2025-02-05T12:53:54.982857 #48154]  INFO -- : Completed 302 Found in 53ms (ActiveRecord: 17.0ms | Allocations: 30612)
+
+
+D, [2025-02-05T12:53:54.983457 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (4.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+I, [2025-02-05T12:53:54.983569 #48154]  INFO -- : Redirected to https://vcsub.s3.amazonaws.com/f9yckp2rqw4cjxem9zru1dklu7pc
+D, [2025-02-05T12:53:54.984780 #48154] DEBUG -- : [36m  S3 Storage (0.1ms) [0m[34mGenerated URL for file at key: qoj0gpz5x4pkhaook6i4xiwscvzm (https://vcsub.s3.amazonaws.com/qoj0gpz5x4pkhaook6i4xiwscvzm)[0m
+I, [2025-02-05T12:53:54.984933 #48154]  INFO -- : Completed 302 Found in 54ms (ActiveRecord: 19.6ms | Allocations: 31845)
+
+
+I, [2025-02-05T12:53:54.985074 #48154]  INFO -- : Redirected to https://vcsub.s3.amazonaws.com/qoj0gpz5x4pkhaook6i4xiwscvzm
+I, [2025-02-05T12:53:54.985474 #48154]  INFO -- : Completed 302 Found in 54ms (ActiveRecord: 22.9ms | Allocations: 31830)
+
+
+I, [2025-02-05T12:54:09.936581 #48154]  INFO -- : Started PATCH "/listings/5" for ::1 at 2025-02-05 12:54:09 -0500
+I, [2025-02-05T12:54:09.956935 #48154]  INFO -- : Processing by ListingsController#update as TURBO_STREAM
+I, [2025-02-05T12:54:09.957532 #48154]  INFO -- :   Parameters: {"authenticity_token"=>"-ViW4kIst3jkLrTbmUJV9SlkiIa3a5rKQD5zXoP2fvV9_xZ7dQwya518yteCinOtTlhdknjXinhAzQXlU2PonQ", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x000000011e57b830 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-48154-bfm1gk.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "id"=>"5"}
+D, [2025-02-05T12:54:09.960344 #48154] DEBUG -- :   [1m[36mListing Load (1.0ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:54:09.960735 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:54:09.962764 #48154] DEBUG -- :   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:54:09.964348 #48154] DEBUG -- : [31mUnpermitted parameter: :images. Context: { controller: ListingsController, action: update, request: #<ActionDispatch::Request:0x00000001208e7d00>, params: {"_method"=>"patch", "authenticity_token"=>"-ViW4kIst3jkLrTbmUJV9SlkiIa3a5rKQD5zXoP2fvV9_xZ7dQwya518yteCinOtTlhdknjXinhAzQXlU2PonQ", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x000000011e57b830 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-48154-bfm1gk.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "controller"=>"listings", "action"=>"update", "id"=>"5"} }[0m
+D, [2025-02-05T12:54:09.974770 #48154] DEBUG -- :   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2025-02-05T12:54:09.975664 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:09.976505 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:54:09.977165 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:09.982213 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Destroy (2.2ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 13]]
+D, [2025-02-05T12:54:09.983071 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:09.984193 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 14]]
+D, [2025-02-05T12:54:09.985043 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:09.985881 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 15]]
+D, [2025-02-05T12:54:09.986713 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:09.995248 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Create (5.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "ejjws2x8cd3yc06vi6ih7fclq1sk"], ["filename", "Screenshot 2025-02-05 at 10.58.29 AM.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon"], ["byte_size", 1163871], ["checksum", "13nXQBeizuHDYc/WDnXG5w=="], ["created_at", "2025-02-05 17:54:09.987769"]]
+D, [2025-02-05T12:54:09.996741 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:10.003641 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Create (5.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Listing"], ["record_id", 5], ["blob_id", 19], ["created_at", "2025-02-05 17:54:09.997925"]]
+D, [2025-02-05T12:54:10.005695 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:10.011838 #48154] DEBUG -- :   [1m[36mListing Update (1.4ms)[0m  [1m[33mUPDATE "listings" SET "updated_at" = $1 WHERE "listings"."id" = $2[0m  [["updated_at", "2025-02-05 17:54:10.006221"], ["id", 5]]
+D, [2025-02-05T12:54:10.012413 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:54:10.013752 #48154] DEBUG -- :   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+D, [2025-02-05T12:54:10.014096 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+I, [2025-02-05T12:54:10.187339 #48154]  INFO -- : [36m  S3 Storage (172.6ms) [0m[32mUploaded file to key: ejjws2x8cd3yc06vi6ih7fclq1sk (checksum: 13nXQBeizuHDYc/WDnXG5w==)[0m
+I, [2025-02-05T12:54:10.187902 #48154]  INFO -- : Completed 500 Internal Server Error in 230ms (ActiveRecord: 18.3ms | Allocations: 24470)
+
+
+F, [2025-02-05T12:54:10.206360 #48154] FATAL -- : 
+Aws::S3::Errors::AccessControlListNotSupported - The bucket does not allow ACLs:
+  app/controllers/listings_controller.rb:41:in `update'
+
+I, [2025-02-05T12:54:10.238260 #48154]  INFO -- : Started POST "/__better_errors/1f8f15f8b2ec0436/variables" for ::1 at 2025-02-05 12:54:10 -0500
+I, [2025-02-05T12:56:36.754175 #48154]  INFO -- : Started GET "/listings/5/edit" for ::1 at 2025-02-05 12:56:36 -0500
+I, [2025-02-05T12:56:36.796687 #48154]  INFO -- : Processing by ListingsController#edit as HTML
+I, [2025-02-05T12:56:36.797145 #48154]  INFO -- :   Parameters: {"id"=>"5"}
+D, [2025-02-05T12:56:36.818870 #48154] DEBUG -- :   [1m[36mListing Load (6.2ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:56:36.824418 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:56:36.845692 #48154] DEBUG -- :   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:56:36.853407 #48154] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:56:36.853566 #48154] DEBUG -- :   Rendering listings/edit.html.erb within layouts/application
+D, [2025-02-05T12:56:36.859620 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:56:36.860249 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:45
+D, [2025-02-05T12:56:36.862941 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (2.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:56:36.864299 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:47
+D, [2025-02-05T12:56:36.866328 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+D, [2025-02-05T12:56:36.866984 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:49
+D, [2025-02-05T12:56:36.877269 #48154] DEBUG -- :   Rendered listings/_form.html.erb (Duration: 23.3ms | Allocations: 5064)
+I, [2025-02-05T12:56:36.877882 #48154]  INFO -- :   Rendered listings/edit.html.erb within layouts/application (Duration: 24.0ms | Allocations: 5132)
+D, [2025-02-05T12:56:36.883362 #48154] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 0.8ms | Allocations: 374)
+I, [2025-02-05T12:56:36.883543 #48154]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 30.0ms | Allocations: 7128)
+I, [2025-02-05T12:56:36.883844 #48154]  INFO -- : Completed 200 OK in 86ms (Views: 27.2ms | ActiveRecord: 10.5ms | Allocations: 9341)
+
+
+I, [2025-02-05T12:56:36.902961 #48154]  INFO -- : Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTksInB1ciI6ImJsb2JfaWQifX0=--804f28dfb3cb9c36fbe8c478d207db75effa446e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3/Screenshot%202025-02-05%20at%2010.58.29%E2%80%AFAM.png" for ::1 at 2025-02-05 12:56:36 -0500
+I, [2025-02-05T12:56:36.919245 #48154]  INFO -- : Processing by ActiveStorage::Representations::RedirectController#show as PNG
+I, [2025-02-05T12:56:36.920335 #48154]  INFO -- :   Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTksInB1ciI6ImJsb2JfaWQifX0=--804f28dfb3cb9c36fbe8c478d207db75effa446e", "variation_key"=>"eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3", "filename"=>"Screenshot 2025-02-05 at 10.58.29 AM"}
+D, [2025-02-05T12:56:36.925328 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+D, [2025-02-05T12:56:36.964545 #48154] DEBUG -- :   [1m[36mActiveStorage::VariantRecord Load (1.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 19], ["variation_digest", "SddQy7MtP5tRaCZn0MdARdfn0f4="], ["LIMIT", 1]]
+I, [2025-02-05T12:56:37.075677 #48154]  INFO -- : [36m  S3 Storage (109.2ms) [0m[34mDownloaded file from key: ejjws2x8cd3yc06vi6ih7fclq1sk[0m
+I, [2025-02-05T12:56:37.076080 #48154]  INFO -- : Completed 500 Internal Server Error in 155ms (ActiveRecord: 1.7ms | Allocations: 13621)
+
+
+F, [2025-02-05T12:56:37.086438 #48154] FATAL -- : 
+ActiveStorage::FileNotFoundError - ActiveStorage::FileNotFoundError:
+
+I, [2025-02-05T12:56:42.242875 #48154]  INFO -- : Started PATCH "/listings/5" for ::1 at 2025-02-05 12:56:42 -0500
+I, [2025-02-05T12:56:42.261648 #48154]  INFO -- : Processing by ListingsController#update as TURBO_STREAM
+I, [2025-02-05T12:56:42.261860 #48154]  INFO -- :   Parameters: {"authenticity_token"=>"eLH5YR1-VvPDvb-2RU9tsyU14wINl5Rths2nCerJ1kP8Fnn4Kl7T4Lrvwbpeh0vrQgk2FsIrhN-GPtGyOlxAKw", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x000000011e572370 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-48154-7srw7n.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "id"=>"5"}
+D, [2025-02-05T12:56:42.264418 #48154] DEBUG -- :   [1m[36mListing Load (1.0ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:56:42.264890 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:56:42.266000 #48154] DEBUG -- :   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:56:42.268312 #48154] DEBUG -- : [31mUnpermitted parameter: :images. Context: { controller: ListingsController, action: update, request: #<ActionDispatch::Request:0x00000001207a8d40>, params: {"_method"=>"patch", "authenticity_token"=>"eLH5YR1-VvPDvb-2RU9tsyU14wINl5Rths2nCerJ1kP8Fnn4Kl7T4Lrvwbpeh0vrQgk2FsIrhN-GPtGyOlxAKw", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x000000011e572370 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-48154-7srw7n.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "controller"=>"listings", "action"=>"update", "id"=>"5"} }[0m
+D, [2025-02-05T12:56:42.274834 #48154] DEBUG -- :   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2025-02-05T12:56:42.275621 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:56:42.276135 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:56:42.276954 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:56:42.279186 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 19]]
+D, [2025-02-05T12:56:42.280126 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:56:42.283007 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "d8xnmm7jf30vvahk9v2dv644i61x"], ["filename", "Screenshot 2025-02-05 at 10.58.29 AM.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon"], ["byte_size", 1163871], ["checksum", "13nXQBeizuHDYc/WDnXG5w=="], ["created_at", "2025-02-05 17:56:42.281052"]]
+D, [2025-02-05T12:56:42.284606 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:56:42.286409 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Listing"], ["record_id", 5], ["blob_id", 20], ["created_at", "2025-02-05 17:56:42.285076"]]
+D, [2025-02-05T12:56:42.287470 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:56:42.290407 #48154] DEBUG -- :   [1m[36mListing Update (1.9ms)[0m  [1m[33mUPDATE "listings" SET "updated_at" = $1 WHERE "listings"."id" = $2[0m  [["updated_at", "2025-02-05 17:56:42.287749"], ["id", 5]]
+D, [2025-02-05T12:56:42.291136 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:56:42.292178 #48154] DEBUG -- :   [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+D, [2025-02-05T12:56:42.292615 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+I, [2025-02-05T12:56:42.367394 #48154]  INFO -- : [36m  S3 Storage (74.2ms) [0m[32mUploaded file to key: d8xnmm7jf30vvahk9v2dv644i61x (checksum: 13nXQBeizuHDYc/WDnXG5w==)[0m
+I, [2025-02-05T12:56:42.367793 #48154]  INFO -- : Completed 500 Internal Server Error in 106ms (ActiveRecord: 6.2ms | Allocations: 11707)
+
+
+F, [2025-02-05T12:56:42.386536 #48154] FATAL -- : 
+Aws::S3::Errors::AccessControlListNotSupported - The bucket does not allow ACLs:
+  app/controllers/listings_controller.rb:41:in `update'
+
+I, [2025-02-05T12:56:42.413039 #48154]  INFO -- : Started POST "/__better_errors/61e7562a2a0ae331/variables" for ::1 at 2025-02-05 12:56:42 -0500
+I, [2025-02-05T12:58:30.696493 #48154]  INFO -- : Started GET "/listings/5/edit" for ::1 at 2025-02-05 12:58:30 -0500
+I, [2025-02-05T12:58:30.728493 #48154]  INFO -- : Processing by ListingsController#edit as HTML
+I, [2025-02-05T12:58:30.728843 #48154]  INFO -- :   Parameters: {"id"=>"5"}
+D, [2025-02-05T12:58:30.737042 #48154] DEBUG -- :   [1m[36mListing Load (2.0ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:58:30.738347 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:58:30.745572 #48154] DEBUG -- :   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:58:30.754055 #48154] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:58:30.754429 #48154] DEBUG -- :   Rendering listings/edit.html.erb within layouts/application
+D, [2025-02-05T12:58:30.767639 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:58:30.768273 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:45
+D, [2025-02-05T12:58:30.769130 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:58:30.769843 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:47
+D, [2025-02-05T12:58:30.771975 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+D, [2025-02-05T12:58:30.772474 #48154] DEBUG -- :   ↳ app/views/listings/_form.html.erb:49
+D, [2025-02-05T12:58:30.777506 #48154] DEBUG -- :   Rendered listings/_form.html.erb (Duration: 22.4ms | Allocations: 5035)
+I, [2025-02-05T12:58:30.777642 #48154]  INFO -- :   Rendered listings/edit.html.erb within layouts/application (Duration: 23.0ms | Allocations: 5103)
+D, [2025-02-05T12:58:30.803888 #48154] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 0.7ms | Allocations: 374)
+I, [2025-02-05T12:58:30.804085 #48154]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 49.7ms | Allocations: 7101)
+I, [2025-02-05T12:58:30.804334 #48154]  INFO -- : Completed 200 OK in 75ms (Views: 49.2ms | ActiveRecord: 5.2ms | Allocations: 9312)
+
+
+I, [2025-02-05T12:58:30.825178 #48154]  INFO -- : Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjAsInB1ciI6ImJsb2JfaWQifX0=--3aaf05fccf174b96fd4ba48b3b85fb9592d6644e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3/Screenshot%202025-02-05%20at%2010.58.29%E2%80%AFAM.png" for ::1 at 2025-02-05 12:58:30 -0500
+I, [2025-02-05T12:58:30.834389 #48154]  INFO -- : Processing by ActiveStorage::Representations::RedirectController#show as PNG
+I, [2025-02-05T12:58:30.834520 #48154]  INFO -- :   Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjAsInB1ciI6ImJsb2JfaWQifX0=--3aaf05fccf174b96fd4ba48b3b85fb9592d6644e", "variation_key"=>"eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3", "filename"=>"Screenshot 2025-02-05 at 10.58.29 AM"}
+D, [2025-02-05T12:58:30.836169 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+D, [2025-02-05T12:58:30.841391 #48154] DEBUG -- :   [1m[36mActiveStorage::VariantRecord Load (3.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 20], ["variation_digest", "SddQy7MtP5tRaCZn0MdARdfn0f4="], ["LIMIT", 1]]
+I, [2025-02-05T12:58:30.969875 #48154]  INFO -- : [36m  S3 Storage (122.7ms) [0m[34mDownloaded file from key: d8xnmm7jf30vvahk9v2dv644i61x[0m
+I, [2025-02-05T12:58:30.970212 #48154]  INFO -- : Completed 500 Internal Server Error in 136ms (ActiveRecord: 3.6ms | Allocations: 6407)
+
+
+F, [2025-02-05T12:58:30.981869 #48154] FATAL -- : 
+ActiveStorage::FileNotFoundError - ActiveStorage::FileNotFoundError:
+
+I, [2025-02-05T12:58:36.349781 #48154]  INFO -- : Started PATCH "/listings/5" for ::1 at 2025-02-05 12:58:36 -0500
+I, [2025-02-05T12:58:36.359054 #48154]  INFO -- : Processing by ListingsController#update as TURBO_STREAM
+I, [2025-02-05T12:58:36.359265 #48154]  INFO -- :   Parameters: {"authenticity_token"=>"VRL_BNHN8l7BiQ10O9BY_-G7zqgR2fX1wcoc1GLNVW_RtX-d5u13Tbjbc3ggGH6nhocbvN5l5UfBOWpvsljDBw", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x0000000120c0be00 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-48154-zws6we.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "id"=>"5"}
+D, [2025-02-05T12:58:36.361486 #48154] DEBUG -- :   [1m[36mListing Load (0.4ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:58:36.361896 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:58:36.362824 #48154] DEBUG -- :   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:58:36.364412 #48154] DEBUG -- : [31mUnpermitted parameter: :images. Context: { controller: ListingsController, action: update, request: #<ActionDispatch::Request:0x00000001208aea78>, params: {"_method"=>"patch", "authenticity_token"=>"VRL_BNHN8l7BiQ10O9BY_-G7zqgR2fX1wcoc1GLNVW_RtX-d5u13Tbjbc3ggGH6nhocbvN5l5UfBOWpvsljDBw", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x0000000120c0be00 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-48154-zws6we.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "controller"=>"listings", "action"=>"update", "id"=>"5"} }[0m
+D, [2025-02-05T12:58:36.371268 #48154] DEBUG -- :   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2025-02-05T12:58:36.372009 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:58:36.373135 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:58:36.374731 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:58:36.376632 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 20]]
+D, [2025-02-05T12:58:36.377604 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:58:36.380335 #48154] DEBUG -- :   [1m[36mActiveStorage::Blob Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "qhvv30w43z0xgee9m39lrrtzolmw"], ["filename", "Screenshot 2025-02-05 at 10.58.29 AM.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon"], ["byte_size", 1163871], ["checksum", "13nXQBeizuHDYc/WDnXG5w=="], ["created_at", "2025-02-05 17:58:36.378906"]]
+D, [2025-02-05T12:58:36.381614 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:58:36.382635 #48154] DEBUG -- :   [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Listing"], ["record_id", 5], ["blob_id", 21], ["created_at", "2025-02-05 17:58:36.381812"]]
+D, [2025-02-05T12:58:36.383458 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:58:36.385051 #48154] DEBUG -- :   [1m[36mListing Update (0.3ms)[0m  [1m[33mUPDATE "listings" SET "updated_at" = $1 WHERE "listings"."id" = $2[0m  [["updated_at", "2025-02-05 17:58:36.383625"], ["id", 5]]
+D, [2025-02-05T12:58:36.385603 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:58:36.386359 #48154] DEBUG -- :   [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+D, [2025-02-05T12:58:36.386741 #48154] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+I, [2025-02-05T12:58:36.472040 #48154]  INFO -- : [36m  S3 Storage (84.8ms) [0m[32mUploaded file to key: qhvv30w43z0xgee9m39lrrtzolmw (checksum: 13nXQBeizuHDYc/WDnXG5w==)[0m
+I, [2025-02-05T12:58:36.472381 #48154]  INFO -- : Completed 500 Internal Server Error in 113ms (ActiveRecord: 4.4ms | Allocations: 11690)
+
+
+F, [2025-02-05T12:58:36.491450 #48154] FATAL -- : 
+Aws::S3::Errors::AccessControlListNotSupported - The bucket does not allow ACLs:
+  app/controllers/listings_controller.rb:41:in `update'
+
+I, [2025-02-05T12:58:36.519025 #48154]  INFO -- : Started POST "/__better_errors/779184ed94ac2691/variables" for ::1 at 2025-02-05 12:58:36 -0500
+D, [2025-02-05T12:59:28.656419 #49589] DEBUG -- : [dotenv] Set [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mAWS_ACCESS_KEY_ID[0m, [36mAWS_SECRET_ACCESS_KEY[0m, [36mAWS_REGION[0m, and [36mAWS_BUCKET[0m
+I, [2025-02-05T12:59:28.659796 #49589]  INFO -- : [dotenv] Loaded [33m.env[0m
+W, [2025-02-05T12:59:28.735570 #49589]  WARN -- : DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /Users/heshie/Development/vc_sub/config/environment.rb:5)
+I, [2025-02-05T12:59:30.564947 #49589]  INFO -- : Started GET "/listings/5/edit" for ::1 at 2025-02-05 12:59:30 -0500
+D, [2025-02-05T12:59:30.770010 #49589] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+I, [2025-02-05T12:59:30.811565 #49589]  INFO -- : Processing by ListingsController#edit as HTML
+I, [2025-02-05T12:59:30.811681 #49589]  INFO -- :   Parameters: {"id"=>"5"}
+D, [2025-02-05T12:59:30.933827 #49589] DEBUG -- :   [1m[36mListing Load (1.1ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:59:30.935098 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:59:31.019422 #49589] DEBUG -- :   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:31.044460 #49589] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:59:31.044934 #49589] DEBUG -- :   Rendering listings/edit.html.erb within layouts/application
+D, [2025-02-05T12:59:31.083897 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:59:31.084871 #49589] DEBUG -- :   ↳ app/views/listings/_form.html.erb:45
+D, [2025-02-05T12:59:31.089776 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:59:31.092459 #49589] DEBUG -- :   ↳ app/views/listings/_form.html.erb:47
+D, [2025-02-05T12:59:31.431593 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (1.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+D, [2025-02-05T12:59:31.432074 #49589] DEBUG -- :   ↳ app/views/listings/_form.html.erb:49
+D, [2025-02-05T12:59:31.477372 #49589] DEBUG -- :   Rendered listings/_form.html.erb (Duration: 431.4ms | Allocations: 141105)
+I, [2025-02-05T12:59:31.477535 #49589]  INFO -- :   Rendered listings/edit.html.erb within layouts/application (Duration: 432.5ms | Allocations: 141498)
+D, [2025-02-05T12:59:31.603027 #49589] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 1.7ms | Allocations: 783)
+I, [2025-02-05T12:59:31.603228 #49589]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 558.3ms | Allocations: 163576)
+I, [2025-02-05T12:59:31.604830 #49589]  INFO -- : Completed 200 OK in 792ms (Views: 546.8ms | ActiveRecord: 42.3ms | Allocations: 202327)
+
+
+I, [2025-02-05T12:59:31.639065 #49589]  INFO -- : Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjEsInB1ciI6ImJsb2JfaWQifX0=--b4f02c3af9eba4b6a6fa96220988f8f7a3f26f00/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3/Screenshot%202025-02-05%20at%2010.58.29%E2%80%AFAM.png" for ::1 at 2025-02-05 12:59:31 -0500
+I, [2025-02-05T12:59:31.663192 #49589]  INFO -- : Processing by ActiveStorage::Representations::RedirectController#show as PNG
+I, [2025-02-05T12:59:31.663322 #49589]  INFO -- :   Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjEsInB1ciI6ImJsb2JfaWQifX0=--b4f02c3af9eba4b6a6fa96220988f8f7a3f26f00", "variation_key"=>"eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsbnVsbF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--2ea8a49607280b1af7ec1ed8cdcaca52d22b3da3", "filename"=>"Screenshot 2025-02-05 at 10.58.29 AM"}
+D, [2025-02-05T12:59:31.668959 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+D, [2025-02-05T12:59:31.696331 #49589] DEBUG -- :   [1m[36mActiveStorage::VariantRecord Load (0.6ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 21], ["variation_digest", "SddQy7MtP5tRaCZn0MdARdfn0f4="], ["LIMIT", 1]]
+I, [2025-02-05T12:59:31.818399 #49589]  INFO -- : [36m  S3 Storage (119.8ms) [0m[34mDownloaded file from key: qhvv30w43z0xgee9m39lrrtzolmw[0m
+I, [2025-02-05T12:59:31.818782 #49589]  INFO -- : Completed 500 Internal Server Error in 155ms (ActiveRecord: 10.8ms | Allocations: 16999)
+
+
+F, [2025-02-05T12:59:31.829616 #49589] FATAL -- : 
+ActiveStorage::FileNotFoundError - ActiveStorage::FileNotFoundError:
+
+I, [2025-02-05T12:59:37.664228 #49589]  INFO -- : Started PATCH "/listings/5" for ::1 at 2025-02-05 12:59:37 -0500
+I, [2025-02-05T12:59:37.680915 #49589]  INFO -- : Processing by ListingsController#update as TURBO_STREAM
+I, [2025-02-05T12:59:37.681414 #49589]  INFO -- :   Parameters: {"authenticity_token"=>"bU0d7Gl4taZuHglDsydpzVGYcK8blAhoFfkxea8JQZvp6p11XlgwtRdMd0-o70-VNqSlu9QoGNoVCkfCf5zX8w", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x0000000119b5f6e8 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-49589-wpxo8w.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "id"=>"5"}
+D, [2025-02-05T12:59:37.683199 #49589] DEBUG -- :   [1m[36mListing Load (0.6ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:59:37.683544 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:59:37.684548 #49589] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:37.685983 #49589] DEBUG -- : [31mUnpermitted parameter: :images. Context: { controller: ListingsController, action: update, request: #<ActionDispatch::Request:0x000000011ab288e0>, params: {"_method"=>"patch", "authenticity_token"=>"bU0d7Gl4taZuHglDsydpzVGYcK8blAhoFfkxea8JQZvp6p11XlgwtRdMd0-o70-VNqSlu9QoGNoVCkfCf5zX8w", "listing"=>{"title"=>"ECM Synchronika II Espresso Machine with Flow Control", "category"=>"Fancy Coffee Machines", "condition"=>"Gently Used (During Our Series A)", "images"=>["", #<ActionDispatch::Http::UploadedFile:0x0000000119b5f6e8 @tempfile=#<Tempfile:/var/folders/87/l1tjnz_930qc4n_8jb2n0x_m0000gn/T/RackMultipart20250205-49589-wpxo8w.png>, @content_type="image/png", @original_filename="Screenshot 2025-02-05 at 10.58.29 AM.png", @headers="Content-Disposition: form-data; name=\"listing[images][]\"; filename=\"Screenshot 2025-02-05 at 10.58.29 AM.png\"\r\nContent-Type: image/png\r\n">], "initial_valuation"=>"47000000000.0", "runway_end_date"=>"2025-03-05", "price"=>"2589.0", "description"=>"The German-designed ECM Synchronika II is a dual-boiler espresso machine that offers the most premium E61 espresso-making experience with its unrivaled build quality and performance. The Synchronika II is less of a sequel and more of a refinement of the original model. The new OLED PID screen's navigation is tactile and intuitive with features such as passive & active pre-infusion and scheduling a daily on/off timer. With subtle race car-inspired elements and customization with handmade hardwoods, enjoy serving a dinner party as much as a morning espresso. Ready to pull shots in 6.5 minutes, the Synchronika's fast heat-up mode is first in class for all E61 espresso machines. This classic, dual boiler espresso machine just got an upgrade with the included LUCCA Flow Control device, allowing you to customize every shot of espresso by adjusting water flow and pressure at the group head from 0 to 10 bar.", "city"=>"Brooklyn", "state"=>"NY", "zip_code"=>"11204"}, "commit"=>"Update Listing", "controller"=>"listings", "action"=>"update", "id"=>"5"} }[0m
+D, [2025-02-05T12:59:37.702277 #49589] DEBUG -- :   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+D, [2025-02-05T12:59:37.703397 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:59:37.704221 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:59:37.705244 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:59:37.708906 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Destroy (0.8ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 21]]
+D, [2025-02-05T12:59:37.709992 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:59:37.715781 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Create (2.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "fvys81owtegtr9ae7cmt8ktdu9qh"], ["filename", "Screenshot 2025-02-05 at 10.58.29 AM.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon"], ["byte_size", 1163871], ["checksum", "13nXQBeizuHDYc/WDnXG5w=="], ["created_at", "2025-02-05 17:59:37.711511"]]
+D, [2025-02-05T12:59:37.717289 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:59:37.719370 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Create (1.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Listing"], ["record_id", 5], ["blob_id", 22], ["created_at", "2025-02-05 17:59:37.717563"]]
+D, [2025-02-05T12:59:37.720693 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:59:37.725581 #49589] DEBUG -- :   [1m[36mListing Update (0.7ms)[0m  [1m[33mUPDATE "listings" SET "updated_at" = $1 WHERE "listings"."id" = $2[0m  [["updated_at", "2025-02-05 17:59:37.721006"], ["id", 5]]
+D, [2025-02-05T12:59:37.726280 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+D, [2025-02-05T12:59:37.727225 #49589] DEBUG -- :   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+D, [2025-02-05T12:59:37.727632 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+I, [2025-02-05T12:59:38.400618 #49589]  INFO -- : [36m  S3 Storage (672.4ms) [0m[32mUploaded file to key: fvys81owtegtr9ae7cmt8ktdu9qh (checksum: 13nXQBeizuHDYc/WDnXG5w==)[0m
+D, [2025-02-05T12:59:38.404822 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.417852 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:41:in `update'
+I, [2025-02-05T12:59:38.452490 #49589]  INFO -- : [ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 2ebab736-510d-45eb-a74a-9da75160ee3d) to Async(default) with arguments: #<GlobalID:0x0000000119a9fed8 @uri=#<URI::GID gid://vc-subsidized/ActiveStorage::Blob/21>>
+I, [2025-02-05T12:59:38.454770 #49589]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 919b05e2-5eeb-4590-9815-005b0e946a54) to Async(default) with arguments: #<GlobalID:0x00000001199d9a80 @uri=#<URI::GID gid://vc-subsidized/ActiveStorage::Blob/22>>
+I, [2025-02-05T12:59:38.456252 #49589]  INFO -- : Redirected to http://localhost:3000/listings/5
+I, [2025-02-05T12:59:38.456588 #49589]  INFO -- : Completed 302 Found in 775ms (ActiveRecord: 8.6ms | Allocations: 26838)
+
+
+I, [2025-02-05T12:59:38.465794 #49589]  INFO -- : Started GET "/listings/5" for ::1 at 2025-02-05 12:59:38 -0500
+I, [2025-02-05T12:59:38.487198 #49589]  INFO -- : Processing by ListingsController#show as TURBO_STREAM
+D, [2025-02-05T12:59:38.487412 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+I, [2025-02-05T12:59:38.488087 #49589]  INFO -- :   Parameters: {"id"=>"5"}
+I, [2025-02-05T12:59:38.489781 #49589]  INFO -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d] Performing ActiveStorage::PurgeJob (Job ID: 2ebab736-510d-45eb-a74a-9da75160ee3d) from Async(default) enqueued at 2025-02-05T17:59:38.451401000Z with arguments: #<GlobalID:0x000000011a03dd68 @uri=#<URI::GID gid://vc-subsidized/ActiveStorage::Blob/21>>
+D, [2025-02-05T12:59:38.492137 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2025-02-05T12:59:38.495321 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mActiveStorage::Attachment Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1 LIMIT $2[0m  [["blob_id", 21], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.498550 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1[0m  [["blob_id", 21]]
+D, [2025-02-05T12:59:38.503023 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.512380 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mActiveStorage::Blob Destroy (7.7ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1[0m  [["id", 21]]
+D, [2025-02-05T12:59:38.513973 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+I, [2025-02-05T12:59:38.545923 #49589]  INFO -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d] [36m  S3 Storage (30.8ms) [0m[31mDeleted file from key: qhvv30w43z0xgee9m39lrrtzolmw[0m
+D, [2025-02-05T12:59:38.548537 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+I, [2025-02-05T12:59:38.551083 #49589]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54] Performing ActiveStorage::AnalyzeJob (Job ID: 919b05e2-5eeb-4590-9815-005b0e946a54) from Async(default) enqueued at 2025-02-05T17:59:38.454600000Z with arguments: #<GlobalID:0x000000011a56d770 @uri=#<URI::GID gid://vc-subsidized/ActiveStorage::Blob/22>>
+D, [2025-02-05T12:59:38.551333 #49589] DEBUG -- :   [1m[36mListing Load (2.9ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.552257 #49589] DEBUG -- :   ↳ app/controllers/listings_controller.rb:56:in `set_listing'
+D, [2025-02-05T12:59:38.555130 #49589] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:59:38.555244 #49589] DEBUG -- :   Rendering listings/show.html.erb within layouts/application
+D, [2025-02-05T12:59:38.558063 #49589] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.558553 #49589] DEBUG -- :   ↳ app/views/listings/show.html.erb:21
+D, [2025-02-05T12:59:38.560502 #49589] DEBUG -- :   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.560934 #49589] DEBUG -- :   ↳ app/views/listings/show.html.erb:21
+D, [2025-02-05T12:59:38.562852 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.563184 #49589] DEBUG -- :   ↳ app/views/listings/show.html.erb:42
+D, [2025-02-05T12:59:38.563624 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:59:38.564016 #49589] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:59:38.564745 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+D, [2025-02-05T12:59:38.565073 #49589] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:59:38.569368 #49589] DEBUG -- : [36m  S3 Storage (3.9ms) [0m[34mGenerated URL for file at key: fvys81owtegtr9ae7cmt8ktdu9qh (https://vcsub.s3.amazonaws.com/fvys81owtegtr9ae7cmt8ktdu9qh?response-content-disposition=inline%3B%20filename%3D%22Screenshot%202025-02-05%20at%2010.58.29%253FAM.png%22%3B%20filename%2A%3DUTF-8%27%27Screenshot%25202025-02-05%2520at%252010.58.29%25E2%2580%25AFAM.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXGDKLGBYZHPPCFRL%2F20250205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250205T175938Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3452ea0341e0b04ef77e17ca56769b0b07bc3e45d492341880e5bcd270c6c901)[0m
+I, [2025-02-05T12:59:38.571354 #49589]  INFO -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d] [36m  S3 Storage (24.7ms) [0m[31mDeleted files by key prefix: variants/qhvv30w43z0xgee9m39lrrtzolmw/[0m
+I, [2025-02-05T12:59:38.572731 #49589]  INFO -- : [ActiveJob] [ActiveStorage::PurgeJob] [2ebab736-510d-45eb-a74a-9da75160ee3d] Performed ActiveStorage::PurgeJob (Job ID: 2ebab736-510d-45eb-a74a-9da75160ee3d) from Async(default) in 89.11ms
+I, [2025-02-05T12:59:38.574943 #49589]  INFO -- :   Rendered listings/show.html.erb within layouts/application (Duration: 19.6ms | Allocations: 11225)
+D, [2025-02-05T12:59:38.576921 #49589] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 366)
+I, [2025-02-05T12:59:38.577037 #49589]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 13264)
+I, [2025-02-05T12:59:38.577192 #49589]  INFO -- : Completed 200 OK in 87ms (Views: 20.6ms | ActiveRecord: 10.5ms | Allocations: 32845)
+
+
+I, [2025-02-05T12:59:38.818551 #49589]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54] [36m  S3 Storage (265.8ms) [0m[34mDownloaded file from key: fvys81owtegtr9ae7cmt8ktdu9qh[0m
+D, [2025-02-05T12:59:38.878159 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2025-02-05T12:59:38.880185 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mActiveStorage::Blob Update (2.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"width\":1180,\"height\":1024,\"analyzed\":true}"], ["id", 22]]
+D, [2025-02-05T12:59:38.882474 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1[0m  [["blob_id", 22]]
+D, [2025-02-05T12:59:38.890835 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mListing Load (2.7ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE "listings"."id" = $1[0m  [["id", 5]]
+D, [2025-02-05T12:59:38.893523 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mListing Update (0.6ms)[0m  [1m[33mUPDATE "listings" SET "updated_at" = $1 WHERE "listings"."id" = $2[0m  [["updated_at", "2025-02-05 17:59:38.892515"], ["id", 5]]
+D, [2025-02-05T12:59:38.894985 #49589] DEBUG -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+I, [2025-02-05T12:59:38.895806 #49589]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [919b05e2-5eeb-4590-9815-005b0e946a54] Performed ActiveStorage::AnalyzeJob (Job ID: 919b05e2-5eeb-4590-9815-005b0e946a54) from Async(default) in 410.59ms
+I, [2025-02-05T12:59:41.496286 #49589]  INFO -- : Started GET "/" for ::1 at 2025-02-05 12:59:41 -0500
+I, [2025-02-05T12:59:41.517981 #49589]  INFO -- : Processing by HomeController#index as HTML
+D, [2025-02-05T12:59:41.531109 #49589] DEBUG -- :   Rendering layout layouts/application.html.erb
+D, [2025-02-05T12:59:41.531263 #49589] DEBUG -- :   Rendering home/index.html.erb within layouts/application
+D, [2025-02-05T12:59:41.533659 #49589] DEBUG -- :   [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT "listings".* FROM "listings" ORDER BY "listings"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:59:41.534107 #49589] DEBUG -- :   ↳ app/views/home/index.html.erb:27
+D, [2025-02-05T12:59:41.537512 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.537945 #49589] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:59:41.541687 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 5], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:59:41.542183 #49589] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:59:41.543021 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.543352 #49589] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:59:41.544957 #49589] DEBUG -- : [36m  S3 Storage (1.3ms) [0m[34mGenerated URL for file at key: fvys81owtegtr9ae7cmt8ktdu9qh (https://vcsub.s3.amazonaws.com/fvys81owtegtr9ae7cmt8ktdu9qh?response-content-disposition=inline%3B%20filename%3D%22Screenshot%202025-02-05%20at%2010.58.29%253FAM.png%22%3B%20filename%2A%3DUTF-8%27%27Screenshot%25202025-02-05%2520at%252010.58.29%25E2%2580%25AFAM.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXGDKLGBYZHPPCFRL%2F20250205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250205T175941Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=83b94370a3a8685f0ed81d7254388e98f8ef346fc9b1691de0345e8c27e69993)[0m
+D, [2025-02-05T12:59:41.546716 #49589] DEBUG -- :   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.547138 #49589] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:59:41.547813 #49589] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 12.9ms | Allocations: 4187)
+D, [2025-02-05T12:59:41.548909 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.549296 #49589] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:59:41.549897 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:59:41.550385 #49589] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:59:41.551142 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.551502 #49589] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:59:41.552811 #49589] DEBUG -- : [36m  S3 Storage (1.1ms) [0m[34mGenerated URL for file at key: u8iw4s7lkr2z2ggr9ikcr0ycn4i1 (https://vcsub.s3.amazonaws.com/u8iw4s7lkr2z2ggr9ikcr0ycn4i1?response-content-disposition=inline%3B%20filename%3D%22Screenshot%202025-02-04%20at%2011.50.15%253FPM.png%22%3B%20filename%2A%3DUTF-8%27%27Screenshot%25202025-02-04%2520at%252011.50.15%25E2%2580%25AFPM.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXGDKLGBYZHPPCFRL%2F20250205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250205T175941Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7ee125b56f6c6e5c486702ebcb05fc78f6240fdbd1a8f7b5024d0bb97827d682)[0m
+D, [2025-02-05T12:59:41.553526 #49589] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.553922 #49589] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:59:41.554345 #49589] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 6.4ms | Allocations: 3826)
+D, [2025-02-05T12:59:41.556627 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Listing"], ["name", "images"], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.556948 #49589] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:2
+D, [2025-02-05T12:59:41.557521 #49589] DEBUG -- :   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Listing"], ["name", "images"]]
+D, [2025-02-05T12:59:41.557911 #49589] DEBUG -- :   ↳ app/models/listing.rb:21:in `image_urls'
+D, [2025-02-05T12:59:41.558460 #49589] DEBUG -- :   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.558813 #49589] DEBUG -- :   ↳ app/models/listing.rb:22:in `block in image_urls'
+D, [2025-02-05T12:59:41.560206 #49589] DEBUG -- : [36m  S3 Storage (1.2ms) [0m[34mGenerated URL for file at key: qnl3rvjewpym4js03c0j9vaoonmk (https://vcsub.s3.amazonaws.com/qnl3rvjewpym4js03c0j9vaoonmk?response-content-disposition=inline%3B%20filename%3D%22Group%20of%20solid%20dudes.jpeg%22%3B%20filename%2A%3DUTF-8%27%27Group%2520of%2520solid%2520dudes.jpeg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXGDKLGBYZHPPCFRL%2F20250205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250205T175941Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8fd9be29ff8f039d8b73c81426ba2c8aef6ef4c7b937b26413a6d6bf17d266ef)[0m
+D, [2025-02-05T12:59:41.560598 #49589] DEBUG -- :   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.560849 #49589] DEBUG -- :   ↳ app/views/listings/_listing.html.erb:10
+D, [2025-02-05T12:59:41.561102 #49589] DEBUG -- :   Rendered listings/_listing.html.erb (Duration: 6.7ms | Allocations: 3626)
+D, [2025-02-05T12:59:41.562349 #49589] DEBUG -- :   [1m[36mRequest Load (0.7ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."created_at" DESC LIMIT $1[0m  [["LIMIT", 6]]
+D, [2025-02-05T12:59:41.562686 #49589] DEBUG -- :   ↳ app/views/home/index.html.erb:40
+D, [2025-02-05T12:59:41.581682 #49589] DEBUG -- :   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.582189 #49589] DEBUG -- :   ↳ app/views/requests/_request.html.erb:5
+D, [2025-02-05T12:59:41.582873 #49589] DEBUG -- :   Rendered requests/_request.html.erb (Duration: 4.9ms | Allocations: 4511)
+I, [2025-02-05T12:59:41.582997 #49589]  INFO -- :   Rendered home/index.html.erb within layouts/application (Duration: 51.7ms | Allocations: 22764)
+D, [2025-02-05T12:59:41.587796 #49589] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+D, [2025-02-05T12:59:41.588353 #49589] DEBUG -- :   ↳ app/views/shared/_navigation.html.erb:17
+D, [2025-02-05T12:59:41.589012 #49589] DEBUG -- :   Rendered shared/_navigation.html.erb (Duration: 3.2ms | Allocations: 1080)
+I, [2025-02-05T12:59:41.589119 #49589]  INFO -- :   Rendered layout layouts/application.html.erb (Duration: 57.9ms | Allocations: 25718)
+I, [2025-02-05T12:59:41.589352 #49589]  INFO -- : Completed 200 OK in 71ms (Views: 45.2ms | ActiveRecord: 21.8ms | Allocations: 27990)
+
+

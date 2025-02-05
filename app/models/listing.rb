@@ -19,7 +19,7 @@ class Listing < ApplicationRecord
   
   def image_urls
     images.map do |image|
-      Rails.application.routes.url_helpers.rails_blob_url(image, only_path: false)
+      image.url(expires_in: 1.week)
     end
   end
 end 
