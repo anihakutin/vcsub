@@ -8,19 +8,39 @@
       Failed startup? Don't worry, someone will definitely want your Herman Miller chairs and barely-used Macbook Pros.
     </p>
     
-    <%= link_to "Post Your Fire Sale", new_listing_path, class: "mt-8 inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700" %>
+    <div class="mt-8 flex justify-center gap-4">
+      <%= link_to "Post Your Fire Sale", new_listing_path, 
+          class: "inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700" %>
+      <%= link_to "Request Items", new_request_path, 
+          class: "inline-block rounded-md border border-gray-300 bg-white px-8 py-3 text-base font-medium text-gray-700 hover:bg-gray-50" %>
+    </div>
   </div>
 
-  <div class="mt-24">
-    <div class="flex justify-between items-center mb-8">
-      <h2 class="text-2xl font-bold">Latest Fire Sales</h2>
-      <%= link_to "View All", listings_path, class: "text-indigo-600 hover:text-indigo-800" %>
+  <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div>
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold">Latest Fire Sales</h2>
+        <%= link_to "View All", listings_path, class: "text-indigo-600 hover:text-indigo-800" %>
+      </div>
+
+      <div class="space-y-6">
+        <% @listings.each do |listing| %>
+          <%= render partial: "listings/listing", locals: { listing: listing } %>
+        <% end %>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <% @listings.each do |listing| %>
-        <%= render partial: "listings/listing", locals: { listing: listing } %>
-      <% end %>
+    <div>
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold">Latest Requests</h2>
+        <%= link_to "View All", requests_path, class: "text-indigo-600 hover:text-indigo-800" %>
+      </div>
+
+      <div class="space-y-6">
+        <% @requests.each do |request| %>
+          <%= render "requests/request", request: request %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div> 

@@ -59,6 +59,9 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:title, :description, :price, :category, 
                                   :condition, :initial_valuation, :runway_end_date,
-                                  :city, :state, :zip_code, images: [])
+                                  :city, :state, :zip_code)
+           .tap do |whitelisted|
+             whitelisted[:images] = params[:listing][:images] if params[:listing][:images].present?
+           end
   end
 end 

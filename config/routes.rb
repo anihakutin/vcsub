@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   }
   
   resources :listings
+  resources :requests
   resource :profile, only: [:show, :edit, :update]
 end 
