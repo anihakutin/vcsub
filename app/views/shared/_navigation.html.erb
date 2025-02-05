@@ -16,7 +16,7 @@
       <div class="flex items-center">
         <% if user_signed_in? %>
           <%= link_to "Profile", profile_path, class: "mr-4 text-gray-500 hover:text-gray-700" %>
-          <%= link_to "Post Listing", new_listing_path, class: "mr-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
+          <%= link_to "Post Listing", new_listing_path, class: "hidden sm:inline-flex mr-4 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700" %>
           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-500 hover:text-gray-700" %>
         <% else %>
           <%= button_to user_google_oauth2_omniauth_authorize_path,
