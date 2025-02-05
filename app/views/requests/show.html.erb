@@ -10,7 +10,10 @@
         <h1 class="text-3xl font-bold text-gray-900"><%= @request.title %></h1>
         
         <div class="flex items-center space-x-4">
-          <%= link_to "https://twitter.com/intent/tweet?text=#{CGI.escape("Looking for: #{@request.title}")}&url=#{CGI.escape(request_url(@request))}&hashtags=startupfiresale",
+          <%= link_to "https://twitter.com/intent/tweet?" + {
+              text: "Bruh, someone on VC Subsidized needs a #{@request.title} ASAP 👀 (budget: $#{@request.budget})",
+              url: request_url(@request)
+          }.compact.to_param,
               target: "_blank",
               class: "text-blue-400 hover:text-blue-600 p-2 rounded-full hover:bg-gray-100" do %>
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">

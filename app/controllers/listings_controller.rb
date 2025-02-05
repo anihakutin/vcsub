@@ -39,6 +39,10 @@ class ListingsController < ApplicationController
 
   def update
     if @listing.update(listing_params)
+      # Attach any new images
+      if params[:listing][:images].present?
+        @listing.images.attach(params[:listing][:images])
+      end
       redirect_to @listing, notice: 'Listing was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
@@ -57,11 +61,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :price, :category, 
-                                  :condition, :initial_valuation, :runway_end_date,
-                                  :city, :state, :zip_code)
-           .tap do |whitelisted|
-             whitelisted[:images] = params[:listing][:images] if params[:listing][:images].present?
-           end
+    # Remove images from strong params since we're handling them separately
+    params.require(:listing).permit(:title, :description, :price, :category, :condition, :city, :state, :zip_code, :initial_valuation, :runway_end_date)
   end
 end 

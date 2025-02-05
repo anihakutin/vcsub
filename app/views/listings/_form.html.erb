@@ -48,6 +48,7 @@
           <% listing.images.each do |image| %>
             <div class="relative">
               <%= image_tag image.variant(:thumb), class: "rounded-lg" %>
+              <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
             </div>
           <% end %>
         </div>
