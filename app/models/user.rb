@@ -5,7 +5,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, :trackable,
+         omniauth_providers: [:google_oauth2]
          
   def self.from_google(auth)
     # Find existing user by uid and provider
@@ -20,5 +21,11 @@ class User < ApplicationRecord
       email: auth[:email],
       password: Devise.friendly_token[0, 20]
     )
+  end
+
+  def profile_completed?
+    name.present? && 
+    company_name.present? && 
+    contact_preference.present?
   end
 end 

@@ -61,7 +61,18 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    # Remove images from strong params since we're handling them separately
-    params.require(:listing).permit(:title, :description, :price, :category, :condition, :city, :state, :zip_code, :initial_valuation, :runway_end_date)
+    params.require(:listing).permit(
+      :title, 
+      :description, 
+      :price, 
+      :category,
+      :condition,
+      :initial_valuation,
+      :runway_end_date,
+      :city,
+      :state,
+      :zip_code,
+      images: []
+    )
   end
 end 

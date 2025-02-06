@@ -8,6 +8,14 @@
       </div>
 
       <div class="space-y-6">
+        <div class="pb-6 border-b">
+          <h3 class="text-lg font-medium text-gray-900">Quick Links</h3>
+          <div class="mt-1 space-x-4">
+            <%= link_to "Post a New Listing", new_listing_path, class: "text-indigo-600 hover:text-indigo-800" %>
+            <%= link_to "Create a New Request", new_request_path, class: "text-indigo-600 hover:text-indigo-800" %>
+          </div>
+        </div>
+
         <div>
           <h3 class="text-lg font-medium text-gray-900">Name</h3>
           <p class="mt-1 text-gray-600"><%= @user.name.presence || "Not set" %></p>
@@ -27,7 +35,7 @@
           <h3 class="text-lg font-medium text-gray-900">Funding Raised</h3>
           <p class="mt-1 text-gray-600">
             <% if @user.funding_raised? %>
-              $<%= number_with_delimiter(@user.funding_raised) %>
+              <%= number_to_currency(@user.funding_raised) %>
             <% else %>
               Not set
             <% end %>

@@ -14,7 +14,7 @@
   <p class="text-gray-600 mt-4"><%= truncate(request.description, length: 150) %></p>
   
   <% if request.budget? %>
-    <p class="text-indigo-600 font-bold mt-4">Budget: $<%= number_with_delimiter(request.budget) %></p>
+    <p class="text-indigo-600 font-bold mt-4">Budget: <%= number_to_currency(request.budget) %></p>
   <% end %>
 
   <div class="mt-4 flex justify-between items-center">
