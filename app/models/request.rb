@@ -5,6 +5,11 @@ class Request < ApplicationRecord
   validates :budget, numericality: { greater_than: 0 }, allow_nil: true
   
   CATEGORIES = [
+    "Engineering & Design",
+    "Growth & Marketing",
+    "Sales & Business Development",
+    "Customer Success",
+    "Operations",
     "Office Furniture",
     "Electronics & Computers",
     "Phone Booths & Meeting Spaces",

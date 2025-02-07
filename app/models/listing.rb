@@ -5,12 +5,20 @@ class Listing < ApplicationRecord
   end
   
   validates :title, :description, :price, :category, :condition, presence: true
-  validates :initial_valuation, :runway_end_date, presence: true
-  
-  def runway_days_remaining
-    return 0 if runway_end_date.nil? || runway_end_date < Date.today
-    (runway_end_date - Date.today).to_i
-  end
+  validates :initial_valuation, presence: true
+
+  CATEGORIES = [
+    "Office Furniture",
+    "Hardware (Macbook, Raspberry Pi, Sonos, etc.)",
+    "Unused Ping Pong Tables",
+    "Promotional Swag",
+    "Fancy Coffee Machines",
+    "Abandoned Code Repositories",
+    "Motivational Posters",
+    "Untouched Exercise Equipment",
+    "Blockchain Whitepapers",
+    "Employees (Highly Skilled)",
+  ]
   
   def valuation_difference
     return 0 if initial_valuation.nil?

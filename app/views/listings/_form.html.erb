@@ -21,18 +21,9 @@
 
           <div>
             <%= form.label :category, class: "block text-sm font-medium text-gray-700" %>
-            <%= form.select :category, [
-              "Office Furniture (Barely Sat On)",
-              "Hardware (Macbook, Raspberry Pi, Sonos, etc.)",
-              "Unused Ping Pong Tables",
-              "Promotional Swag",
-              "Fancy Coffee Machines",
-              "Abandoned Code Repositories",
-              "Motivational Posters",
-              "Untouched Exercise Equipment",
-              "Blockchain Whitepapers",
-              "Employees (Highly Skilled)",
-            ], {}, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+            <%= form.select :category, Listing::CATEGORIES, 
+                { include_blank: "Select a category" },
+                class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
           </div>
 
           <div>
@@ -63,7 +54,7 @@
           </div>
 
           <div>
-            <%= form.label :initial_valuation, "Startup Valuation at Time of Purchase", 
+            <%= form.label :initial_valuation, "Startup Valuation at Time of Purchase (optional)", 
                 class: "block text-sm font-medium text-gray-700" %>
             <div class="mt-1 relative rounded-md shadow-sm">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -72,13 +63,6 @@
               <%= form.number_field :initial_valuation, step: :any, 
                   class: "pl-7 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
             </div>
-          </div>
-
-          <div>
-            <%= form.label :runway_end_date, "Runway End Date (when the money runs out)", 
-                class: "block text-sm font-medium text-gray-700" %>
-            <%= form.date_field :runway_end_date, 
-                class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
           </div>
 
           <div>

@@ -68,7 +68,6 @@ class ListingsController < ApplicationController
       :category,
       :condition,
       :initial_valuation,
-      :runway_end_date,
       :city,
       :state,
       :zip_code,
