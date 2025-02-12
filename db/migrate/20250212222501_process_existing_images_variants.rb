@@ -1,4 +1,4 @@
-class ProcessExistingImageVariants < ActiveRecord::Migration[7.0]
+class ProcessExistingImagesVariants < ActiveRecord::Migration[7.1]
   def up
     puts "Starting to process image variants..."
     
@@ -32,4 +32,4 @@ class ProcessExistingImageVariants < ActiveRecord::Migration[7.0]
   def down
     # No need to undo variant processing
   end
-end 
+end
