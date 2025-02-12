@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_06_041943) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_12_210826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,8 +56,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_06_041943) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.integer "views_count", default: 0
+    t.string "status", default: "available"
     t.index ["category"], name: "index_listings_on_category"
     t.index ["condition"], name: "index_listings_on_condition"
+    t.index ["status"], name: "index_listings_on_status"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -72,6 +75,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_06_041943) do
     t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "views_count", default: 0
+    t.string "status", default: "open"
+    t.index ["status"], name: "index_requests_on_status"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 

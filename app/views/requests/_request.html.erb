@@ -1,4 +1,14 @@
-<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow relative">
+  <% if request.fulfilled? %>
+    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+      Fulfilled
+    </div>
+  <% end %>
+  
+  <div class="text-sm text-gray-500 mb-2">
+    <%= pluralize(request.views_count, 'view') %>
+  </div>
+
   <div class="flex justify-between items-start">
     <div>
       <h3 class="text-xl font-semibold"><%= request.title %></h3>

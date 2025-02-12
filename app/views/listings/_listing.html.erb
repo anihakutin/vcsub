@@ -1,8 +1,18 @@
-<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow relative">
+  <% if listing.sold? %>
+    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+      Sold
+    </div>
+  <% end %>
+  
+  <div class="text-sm text-gray-500 mb-2">
+    <%= pluralize(listing.views_count, 'view') %>
+  </div>
+  
   <% if listing.images.attached? %>
-    <div class="aspect-w-4 aspect-h-3">
+    <div class="h-[298px] flex items-center justify-center bg-gray-50 rounded-lg">
       <%= image_tag listing.image_urls.first,
-          class: "w-full h-full object-cover rounded-lg" %>
+          class: "max-h-[298px] w-full object-contain rounded-lg" %>
     </div>
   <% end %>
   

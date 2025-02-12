@@ -7,7 +7,14 @@
   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
     <div class="p-8">
       <div class="flex justify-between items-start">
-        <h1 class="text-3xl font-bold text-gray-900"><%= @listing.title %></h1>
+        <div class="flex items-center gap-4">
+          <h1 class="text-3xl font-bold text-gray-900"><%= @listing.title %></h1>
+          <% if @listing.sold? %>
+            <div class="bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+              Sold
+            </div>
+          <% end %>
+        </div>
         
         <div class="flex items-center space-x-4">
           <%= link_to "https://twitter.com/intent/tweet?" + {
@@ -196,6 +203,15 @@
           </div>
         </div>
       </div>
+
+      <% if user_signed_in? && current_user == @listing.user && @listing.available? %>
+        <%= button_to mark_as_sold_listing_path(@listing), 
+            method: :patch,
+            class: "mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700",
+            data: { turbo_confirm: "Are you sure you want to mark this listing as sold?" } do %>
+          Mark as Sold
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div> 

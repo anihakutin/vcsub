@@ -7,7 +7,14 @@
   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
     <div class="p-8">
       <div class="flex justify-between items-start">
-        <h1 class="text-3xl font-bold text-gray-900"><%= @request.title %></h1>
+        <div class="flex items-center gap-4">
+          <h1 class="text-3xl font-bold text-gray-900"><%= @request.title %></h1>
+          <% if @request.fulfilled? %>
+            <div class="bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+              Fulfilled
+            </div>
+          <% end %>
+        </div>
         
         <div class="flex items-center space-x-4">
           <%= link_to "https://twitter.com/intent/tweet?" + {
@@ -127,6 +134,15 @@
           </div>
         </div>
       </div>
+
+      <% if user_signed_in? && current_user == @request.user && @request.open? %>
+        <%= button_to mark_as_fulfilled_request_path(@request), 
+            method: :patch,
+            class: "mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700",
+            data: { turbo_confirm: "Are you sure you want to mark this request as fulfilled?" } do %>
+          Mark as Fulfilled
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div> 

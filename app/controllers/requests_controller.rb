@@ -1,10 +1,17 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :mark_as_fulfilled]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @requests = Request.order(created_at: :desc)
     
+    @requests = case params[:status]
+                when 'fulfilled'
+                  @requests.fulfilled
+                else
+                  @requests.open
+                end
+
     # Apply filters if present
     @requests = @requests.where(city: params[:city]) if params[:city].present?
     @requests = @requests.where(state: params[:state]) if params[:state].present?
@@ -19,6 +26,7 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @request.increment_views
   end
 
   def new
@@ -49,6 +57,11 @@ class RequestsController < ApplicationController
   def destroy
     @request.destroy
     redirect_to requests_url, notice: 'Request was successfully removed.'
+  end
+
+  def mark_as_fulfilled
+    @request.mark_as_fulfilled!
+    redirect_to @request, notice: 'Request has been marked as fulfilled!'
   end
 
   private

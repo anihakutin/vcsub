@@ -1,11 +1,19 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :mark_as_sold]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @listings = Listing.order(created_at: :desc)
     
-    # Apply filters if present
+    # Filter by status
+    @listings = case params[:status]
+                when 'sold'
+                  @listings.sold
+                else
+                  @listings.available
+                end
+    
+    # Apply other filters if present
     @listings = @listings.where(city: params[:city]) if params[:city].present?
     @listings = @listings.where(state: params[:state]) if params[:state].present?
     @listings = @listings.where(zip_code: params[:zip_code]) if params[:zip_code].present?
@@ -18,6 +26,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listing.increment_views
   end
 
   def new
@@ -50,6 +59,11 @@ class ListingsController < ApplicationController
     redirect_to listings_url, notice: 'Listing was successfully removed.'
   end
 
+  def mark_as_sold
+    @listing.mark_as_sold!
+    redirect_to @listing, notice: 'Listing has been marked as sold!'
+  end
+
   private
 
   def set_listing
@@ -66,6 +80,7 @@ class ListingsController < ApplicationController
       :city,
       :state,
       :zip_code,
+      :status,
       images: []
     )
   end
