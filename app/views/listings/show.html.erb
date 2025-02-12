@@ -45,10 +45,60 @@
       <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="space-y-6">
           <% if @listing.images.attached? %>
-            <div class="aspect-w-4 aspect-h-3">
-              <%= image_tag @listing.image_urls.first, 
-                  class: "w-full h-full object-contain rounded-lg" %>
+            <div class="relative" id="image-slider">
+              <div class="h-[400px] relative bg-gray-100 rounded-lg">
+                <% @listing.images.each_with_index do |image, index| %>
+                  <div class="slide w-full h-full <%= index == 0 ? '' : 'hidden' %>">
+                    <%= image_tag image.url, class: "w-full h-full object-contain rounded-lg" %>
+                  </div>
+                <% end %>
+                
+                <% if @listing.images.count > 1 %>
+                  <button onclick="changeSlide(-1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-opacity-75">
+                    ❮
+                  </button>
+                  <button onclick="changeSlide(1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-opacity-75">
+                    ❯
+                  </button>
+                <% end %>
+              </div>
+              
+              <% if @listing.images.count > 1 %>
+                <div class="flex justify-center mt-4 gap-2">
+                  <% @listing.images.each_with_index do |image, index| %>
+                    <div class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer dot" 
+                         onclick="currentSlide(<%= index + 1 %>)"></div>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
+
+            <script>
+              let slideIndex = 1;
+              showSlides(slideIndex);
+
+              function changeSlide(n) {
+                showSlides(slideIndex += n);
+              }
+
+              function currentSlide(n) {
+                showSlides(slideIndex = n);
+              }
+
+              function showSlides(n) {
+                const slides = document.querySelectorAll('.slide');
+                const dots = document.querySelectorAll('.dot');
+                
+                if (n > slides.length) slideIndex = 1;
+                if (n < 1) slideIndex = slides.length;
+
+                slides.forEach(slide => slide.classList.add('hidden'));
+                dots.forEach(dot => dot.classList.remove('bg-indigo-600'));
+
+                slides[slideIndex - 1].classList.remove('hidden');
+                dots[slideIndex - 1]?.classList.add('bg-indigo-600');
+              }
+            </script>
           <% end %>
           
           <div class="prose max-w-none">

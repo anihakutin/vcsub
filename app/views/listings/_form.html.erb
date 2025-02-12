@@ -38,31 +38,25 @@
 
           <div>
             <%= form.label :images, class: "block text-sm font-medium text-gray-700" %>
-            <% if listing.persisted? && listing.images.attached? %>
-              <div class="mt-2 grid grid-cols-2 gap-4 mb-4">
+            <div class="mt-2 grid grid-cols-2 gap-4 mb-4">
+              <% if listing.persisted? && listing.images.attached? %>
                 <% listing.images.each do |image| %>
-                  <div class="relative">
-                    <%= image_tag image.variant(:thumb), class: "rounded-lg" %>
+                  <div class="relative group" id="image-<%= image.id %>">
+                    <%= image_tag image.variant(:thumb), class: "rounded-lg h-48 w-full object-cover" %>
                     <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+                    <button type="button" 
+                            onclick="this.closest('div').style.display='none'; this.previousElementSibling.remove();"
+                            class="absolute top-2 right-2 bg-black bg-opacity-50 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                      x
+                    </button>
                   </div>
                 <% end %>
-              </div>
-              <p class="text-sm text-gray-500 mb-2">Add more images:</p>
-            <% end %>
-            <%= form.file_field :images, multiple: true, class: "mt-1 block w-full", 
-                accept: 'image/png,image/jpeg,image/jpg' %>
-          </div>
-
-          <div>
-            <%= form.label :initial_valuation, "Startup Valuation at Time of Purchase (optional)", 
-                class: "block text-sm font-medium text-gray-700" %>
-            <div class="mt-1 relative rounded-md shadow-sm">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span class="text-gray-500 sm:text-sm">$</span>
-              </div>
-              <%= form.number_field :initial_valuation, step: :any, 
-                  class: "pl-7 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+              <% end %>
+              <div id="image-preview"></div>
             </div>
+            <%= form.file_field :images, multiple: true, class: "mt-1 block w-full", 
+                accept: 'image/png,image/jpeg,image/jpg',
+                onchange: "previewImages(this)" %>
           </div>
 
           <div>
@@ -110,4 +104,32 @@
       <% end %>
     </div>
   </div>
-</div> 
+</div>
+
+<script>
+function previewImages(input) {
+  const preview = document.getElementById('image-preview');
+  
+  if (input.files) {
+    [...input.files].forEach(file => {
+      const reader = new FileReader();
+      const div = document.createElement('div');
+      div.className = 'relative group';
+      
+      reader.onload = e => {
+        div.innerHTML = `
+          <img src="${e.target.result}" class="rounded-lg h-48 w-full object-cover" />
+          <button type="button" 
+                  onclick="this.closest('div').remove()"
+                  class="absolute top-2 right-2 bg-black bg-opacity-50 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+            x
+          </button>
+        `;
+      };
+      
+      reader.readAsDataURL(file);
+      preview.appendChild(div);
+    });
+  }
+}
+</script> 

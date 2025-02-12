@@ -5,7 +5,6 @@ class Listing < ApplicationRecord
   end
   
   validates :title, :description, :price, :category, :condition, presence: true
-  validates :initial_valuation, presence: true
 
   CATEGORIES = [
     "Office Furniture",
@@ -19,11 +18,6 @@ class Listing < ApplicationRecord
     "Blockchain Whitepapers",
     "Employees (Highly Skilled)",
   ]
-  
-  def valuation_difference
-    return 0 if initial_valuation.nil?
-    ((initial_valuation - price) / initial_valuation.to_f * 100).round(2)
-  end
   
   def image_urls
     images.map do |image|

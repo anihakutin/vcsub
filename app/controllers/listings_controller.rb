@@ -39,10 +39,6 @@ class ListingsController < ApplicationController
 
   def update
     if @listing.update(listing_params)
-      # Attach any new images
-      if params[:listing][:images].present?
-        @listing.images.attach(params[:listing][:images])
-      end
       redirect_to @listing, notice: 'Listing was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
@@ -67,7 +63,6 @@ class ListingsController < ApplicationController
       :price, 
       :category,
       :condition,
-      :initial_valuation,
       :city,
       :state,
       :zip_code,
