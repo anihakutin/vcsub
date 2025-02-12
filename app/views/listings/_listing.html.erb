@@ -11,7 +11,7 @@
   
   <% if listing.images.attached? %>
     <div class="h-[298px] flex items-center justify-center bg-gray-50 rounded-lg">
-      <%= image_tag listing.image_urls.first,
+      <%= image_tag listing.images.first.variant(:thumb),
           class: "max-h-[298px] w-full object-contain rounded-lg" %>
     </div>
   <% end %>

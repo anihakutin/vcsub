@@ -23,6 +23,9 @@ module ApplicationHelper
   def set_meta_tags(title: nil, description: nil, image: nil)
     content_for :meta_tags do
       tags = []
+      # Make sure image URL is absolute
+      image = Rails.application.routes.url_helpers.url_for(image) if image.present?
+      
       # Open Graph tags
       tags << tag(:meta, property: 'og:title', content: title) if title
       tags << tag(:meta, property: 'og:description', content: description) if description
