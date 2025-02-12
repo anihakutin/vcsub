@@ -1,5 +1,5 @@
 <% description = truncate(@listing.description, length: 160) %>
-<% image_url = @listing.images.attached? ? url_for(@listing.images.first.variant(:social)) : nil %>
+<% image_url = @listing.images.attached? ? @listing.social_url(@listing.images.first) : nil %>
 <% title = "#{@listing.title} - #{number_to_currency(@listing.price)}" %>
 
 <%= set_meta_tags(
@@ -31,7 +31,7 @@
             text: "Bruh, look what I found on VC Subsidized: a #{@listing.category.downcase} for $#{@listing.price} 👀",
             url: listing_url(@listing),
             card: "summary_large_image",
-            image: @listing.images.attached? ? url_for(@listing.images.first.variant(:social)) : nil
+            image: @listing.images.attached? ? @listing.social_url(@listing.images.first) : nil
           }.compact.to_param,
               target: "_blank",
               class: "text-blue-400 hover:text-blue-600 p-2 rounded-full hover:bg-gray-100" do %>
@@ -66,7 +66,8 @@
               <div class="h-[400px] relative bg-gray-100 rounded-lg">
                 <% @listing.images.each_with_index do |image, index| %>
                   <div class="slide w-full h-full <%= index == 0 ? '' : 'hidden' %>">
-                    <%= image_tag image.variant(:medium), class: "w-full h-full object-contain rounded-lg" %>
+                    <%= image_tag @listing.medium_url(image), 
+                        class: "w-full h-full object-contain rounded-lg" %>
                   </div>
                 <% end %>
                 

@@ -29,7 +29,61 @@ class Listing < ApplicationRecord
   
   def image_urls
     images.map do |image|
-      image.variant(:medium).processed.url(expires_in: 1.week)
+      begin
+        # Try to get the processed variant with expiration
+        variant = image.variant(:medium).processed
+        Rails.application.routes.url_helpers.rails_blob_representation_url(
+          variant.blob.signed_id,
+          variant.variation.key,
+          host: Rails.application.config.action_mailer.default_url_options[:host],
+          expires_in: 1.week
+        )
+      rescue
+        # Fallback to original image if variant processing failed
+        image.url(expires_in: 1.week)
+      end
+    end
+  end
+
+  def thumb_url(image)
+    begin
+      variant = image.variant(:thumb).processed
+      Rails.application.routes.url_helpers.rails_blob_representation_url(
+        variant.blob.signed_id,
+        variant.variation.key,
+        host: Rails.application.config.action_mailer.default_url_options[:host],
+        expires_in: 1.week
+      )
+    rescue
+      image.url(expires_in: 1.week)
+    end
+  end
+
+  def medium_url(image)
+    begin
+      variant = image.variant(:medium).processed
+      Rails.application.routes.url_helpers.rails_blob_representation_url(
+        variant.blob.signed_id,
+        variant.variation.key,
+        host: Rails.application.config.action_mailer.default_url_options[:host],
+        expires_in: 1.week
+      )
+    rescue
+      image.url(expires_in: 1.week)
+    end
+  end
+
+  def social_url(image)
+    begin
+      variant = image.variant(:social).processed
+      Rails.application.routes.url_helpers.rails_blob_representation_url(
+        variant.blob.signed_id,
+        variant.variation.key,
+        host: Rails.application.config.action_mailer.default_url_options[:host],
+        expires_in: 1.week
+      )
+    rescue
+      image.url(expires_in: 1.week)
     end
   end
 
