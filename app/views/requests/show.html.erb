@@ -1,3 +1,11 @@
+<% description = truncate(@request.description, length: 160) %>
+<% title = "#{@request.title}#{" - Budget: #{number_to_currency(@request.budget)}" if @request.budget?}" %>
+
+<%= set_meta_tags(
+  title: title,
+  description: description
+) %>
+
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="text-center mb-12">
     <h2 class="text-3xl font-bold text-gray-900">Startup Request</h2>

@@ -1,3 +1,13 @@
+<% description = truncate(@listing.description, length: 160) %>
+<% image_url = @listing.images.attached? ? url_for(@listing.images.first) : nil %>
+<% title = "#{@listing.title} - #{number_to_currency(@listing.price)}" %>
+
+<%= set_meta_tags(
+  title: title,
+  description: description,
+  image: image_url
+) %>
+
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="text-center mb-12">
     <h2 class="text-3xl font-bold text-gray-900">Startup Liquidation Special</h2>

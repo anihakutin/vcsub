@@ -19,4 +19,23 @@ module ApplicationHelper
       ['Wyoming', 'WY']
     ]
   end
+
+  def set_meta_tags(title: nil, description: nil, image: nil)
+    content_for :meta_tags do
+      tags = []
+      # Open Graph tags
+      tags << tag(:meta, property: 'og:title', content: title) if title
+      tags << tag(:meta, property: 'og:description', content: description) if description
+      tags << tag(:meta, property: 'og:image', content: image) if image
+      tags << tag(:meta, property: 'og:type', content: 'website')
+      
+      # Twitter Card tags
+      tags << tag(:meta, name: 'twitter:card', content: 'summary_large_image')
+      tags << tag(:meta, name: 'twitter:title', content: title) if title
+      tags << tag(:meta, name: 'twitter:description', content: description) if description
+      tags << tag(:meta, name: 'twitter:image', content: image) if image
+      
+      tags.join("\n").html_safe
+    end
+  end
 end 
