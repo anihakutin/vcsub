@@ -5,25 +5,33 @@ class ListingsController < ApplicationController
   def index
     @listings = if user_signed_in? && params[:my_listings]
       # Show all of current user's listings regardless of status
-      current_user.listings.order(created_at: :desc)
+      current_user.listings
     else
-      # For public view, only show available listings
-      base_query = Listing.where(status: 'available')
-      
-      # If user is signed in, also include their pending listings
+      # For public view, show available listings + user's pending + sold listings
+      base_query = Listing.where(status: ['available', 'sold'])
       if user_signed_in?
         base_query = base_query.or(Listing.where(user: current_user, status: 'pending'))
       end
-      
-      base_query.order(created_at: :desc)
+      base_query
     end
 
-    # Apply status filter only for my_listings view
-    if user_signed_in? && params[:my_listings] && params[:status].present?
-      @listings = @listings.where(status: params[:status])
+    # Apply status filter
+    if params[:status].present?
+      case params[:status]
+      when 'sold'
+        @listings = @listings.where(status: 'sold')
+      when 'pending'
+        @listings = user_signed_in? ? @listings.where(status: 'pending') : @listings.none
+      when 'available'
+        @listings = @listings.where(status: 'available')
+      end
+    else
+      # Default to available when no status is specified
+      @listings = @listings.where(status: 'available')
     end
     
     # Apply other filters if present
+    @listings = @listings.order(created_at: :desc)
     @listings = @listings.where(city: params[:city]) if params[:city].present?
     @listings = @listings.where(state: params[:state]) if params[:state].present?
     @listings = @listings.where(zip_code: params[:zip_code]) if params[:zip_code].present?
@@ -32,7 +40,7 @@ class ListingsController < ApplicationController
     @cities = Listing.distinct.pluck(:city).compact.sort
     @states = Listing.distinct.pluck(:state).compact.sort
     
-    @listings = @listings.page(params[:page]).per(12)
+    @listings = @listings.page(params[:page]).per(6)
   end
 
   def show

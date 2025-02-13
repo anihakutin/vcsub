@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_18_000000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "views_count", default: 0
-    t.string "status", default: "open"
+    t.string "status", default: "pending"
     t.index ["status"], name: "index_requests_on_status"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end

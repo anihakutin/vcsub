@@ -33,13 +33,17 @@
     <% end %>
   </div>
 
-  <div class="mb-6">
-    <div class="flex space-x-4">
-      <%= link_to "Available", listings_path(status: 'available'), 
-          class: "px-4 py-2 rounded-md #{params[:status] != 'sold' ? 'bg-indigo-600 text-white' : 'bg-gray-100'}" %>
-      <%= link_to "Sold", listings_path(status: 'sold'), 
-          class: "px-4 py-2 rounded-md #{params[:status] == 'sold' ? 'bg-indigo-600 text-white' : 'bg-gray-100'}" %>
-    </div>
+  <div class="flex items-center space-x-4 mb-6">
+    <%= link_to "Available", listings_path(status: 'available', my_listings: params[:my_listings]), 
+        class: "text-sm #{params[:status].blank? || params[:status] == 'available' ? 'text-indigo-600 font-semibold' : 'text-gray-500 hover:text-gray-700'}" %>
+    
+    <%= link_to "Sold", listings_path(status: 'sold', my_listings: params[:my_listings]), 
+        class: "text-sm #{params[:status] == 'sold' ? 'text-indigo-600 font-semibold' : 'text-gray-500 hover:text-gray-700'}" %>
+    
+    <% if user_signed_in? %>
+      <%= link_to "Pending", listings_path(status: 'pending', my_listings: params[:my_listings]), 
+          class: "text-sm #{params[:status] == 'pending' ? 'text-indigo-600 font-semibold' : 'text-gray-500 hover:text-gray-700'}" %>
+    <% end %>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

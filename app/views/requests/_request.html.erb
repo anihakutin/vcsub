@@ -1,12 +1,22 @@
 <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow relative">
-  <% if request.fulfilled? %>
-    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
-      Fulfilled
+  <div class="flex justify-between items-center mb-4">
+    <div class="text-sm text-gray-500">
+      <%= number_with_delimiter(request.views_count) %> views
     </div>
-  <% end %>
+    
+    <% if request.fulfilled? %>
+      <div class="bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+        Fulfilled
+      </div>
+    <% elsif request.pending? %>
+      <div class="bg-blue-500 text-white px-2 py-1 rounded-md text-sm">
+        Pending
+      </div>
+    <% end %>
+  </div>
   
-  <div class="text-sm text-gray-500 mb-2">
-    <%= pluralize(request.views_count, 'view') %>
+  <div class="text-sm text-gray-500 mt-8">
+    <%= number_with_delimiter(request.views_count) %> views
   </div>
 
   <div class="flex justify-between items-start">

@@ -1,12 +1,18 @@
 <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow relative">
-  <% if listing.sold? %>
-    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
-      Sold
+  <div class="flex justify-between items-center mb-4">
+    <div class="text-sm text-gray-500">
+      <%= number_with_delimiter(listing.views_count) %> views
     </div>
-  <% end %>
-  
-  <div class="text-sm text-gray-500">
-    <%= number_with_delimiter(listing.views_count) %> views
+    
+    <% if listing.sold? %>
+      <div class="bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+        Sold
+      </div>
+    <% elsif listing.pending? %>
+      <div class="bg-blue-500 text-white px-2 py-1 rounded-md text-sm">
+        Pending
+      </div>
+    <% end %>
   </div>
   
   <% if listing.images.attached? %>

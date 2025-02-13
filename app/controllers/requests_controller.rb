@@ -5,25 +5,33 @@ class RequestsController < ApplicationController
   def index
     @requests = if user_signed_in? && params[:my_requests]
       # Show all of current user's requests regardless of status
-      current_user.requests.order(created_at: :desc)
+      current_user.requests
     else
-      # For public view, only show open requests
-      base_query = Request.where(status: 'open')
-      
-      # If user is signed in, also include their pending requests
+      # For public view, show open requests + user's pending + fulfilled requests
+      base_query = Request.where(status: ['open', 'fulfilled'])
       if user_signed_in?
         base_query = base_query.or(Request.where(user: current_user, status: 'pending'))
       end
-      
-      base_query.order(created_at: :desc)
+      base_query
     end
 
-    # Apply status filter only for my_requests view
-    if user_signed_in? && params[:my_requests] && params[:status].present?
-      @requests = @requests.where(status: params[:status])
+    # Apply status filter
+    if params[:status].present?
+      case params[:status]
+      when 'fulfilled'
+        @requests = @requests.where(status: 'fulfilled')
+      when 'pending'
+        @requests = user_signed_in? ? @requests.where(status: 'pending') : @requests.none
+      when 'open'
+        @requests = @requests.where(status: 'open')
+      end
+    else
+      # Default to open when no status is specified
+      @requests = @requests.where(status: 'open')
     end
     
-    # Apply other filters if present
+    # Apply other filters and ordering
+    @requests = @requests.order(created_at: :desc)
     @requests = @requests.where(city: params[:city]) if params[:city].present?
     @requests = @requests.where(state: params[:state]) if params[:state].present?
     @requests = @requests.where(category: params[:category]) if params[:category].present?
@@ -34,7 +42,7 @@ class RequestsController < ApplicationController
     @cities = Request.distinct.pluck(:city).compact.sort
     @states = Request.distinct.pluck(:state).compact.sort
     
-    @requests = @requests.page(params[:page]).per(12)
+    @requests = @requests.page(params[:page]).per(6)
   end
 
   def show
