@@ -6966,10 +6966,23 @@
     copy() {
       navigator.clipboard.writeText(this.sourceTarget.value).then(() => {
         const toast = document.createElement("div");
-        toast.className = "fixed bottom-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg z-50";
+        toast.className = `
+          fixed top-4 left-1/2 -translate-x-1/2 
+          bg-gray-900 text-white 
+          px-4 py-2 
+          rounded-lg shadow-lg 
+          z-50
+          animate-fade-in-down
+          max-w-[90%] md:max-w-md
+          text-center
+          text-sm md:text-base
+        `;
         toast.textContent = "Copied to clipboard!";
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2e3);
+        setTimeout(() => {
+          toast.classList.add("animate-fade-out-up");
+          setTimeout(() => toast.remove(), 300);
+        }, 2e3);
       }).catch((err) => console.error("Failed to copy:", err));
     }
   };
