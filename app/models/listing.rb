@@ -3,7 +3,7 @@ class Listing < ApplicationRecord
   has_many_attached :images do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, nil]
     attachable.variant :medium, resize_to_limit: [800, nil]
-    attachable.variant :social, resize_to_limit: [1200, 630]
+    attachable.variant :social, resize_to_limit: [600, 315]
   end
   
   validates :title, :description, :price, :category, :condition, presence: true
@@ -51,10 +51,13 @@ class Listing < ApplicationRecord
       Rails.application.routes.url_helpers.rails_blob_representation_url(
         variant.blob.signed_id,
         variant.variation.key,
+        image.blob.filename,
         host: Rails.application.config.action_mailer.default_url_options[:host],
+        protocol: Rails.application.config.action_mailer.default_url_options[:protocol],
         expires_in: 1.week
       )
-    rescue
+    rescue => e
+      Rails.logger.error("Error getting thumb URL for #{image.blob.filename}: #{e.message}")
       image.url(expires_in: 1.week)
     end
   end
@@ -65,10 +68,13 @@ class Listing < ApplicationRecord
       Rails.application.routes.url_helpers.rails_blob_representation_url(
         variant.blob.signed_id,
         variant.variation.key,
+        image.blob.filename,
         host: Rails.application.config.action_mailer.default_url_options[:host],
+        protocol: Rails.application.config.action_mailer.default_url_options[:protocol],
         expires_in: 1.week
       )
-    rescue
+    rescue => e
+      Rails.logger.error("Error getting medium URL for #{image.blob.filename}: #{e.message}")
       image.url(expires_in: 1.week)
     end
   end
@@ -79,10 +85,13 @@ class Listing < ApplicationRecord
       Rails.application.routes.url_helpers.rails_blob_representation_url(
         variant.blob.signed_id,
         variant.variation.key,
+        image.blob.filename,
         host: Rails.application.config.action_mailer.default_url_options[:host],
+        protocol: Rails.application.config.action_mailer.default_url_options[:protocol],
         expires_in: 1.week
       )
-    rescue
+    rescue => e
+      Rails.logger.error("Error getting social URL for #{image.blob.filename}: #{e.message}")
       image.url(expires_in: 1.week)
     end
   end

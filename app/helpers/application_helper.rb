@@ -23,20 +23,27 @@ module ApplicationHelper
   def set_meta_tags(title: nil, description: nil, image: nil)
     content_for :meta_tags do
       tags = []
-      # Make sure image URL is absolute
-      image = Rails.application.routes.url_helpers.url_for(image) if image.present?
+      
+      # Make sure image URL is absolute and encoded
+      if image.present?
+        image_url = if image.start_with?('http')
+          image
+        else
+          Rails.application.routes.url_helpers.url_for(image)
+        end
+      end
       
       # Open Graph tags
       tags << tag(:meta, property: 'og:title', content: title) if title
       tags << tag(:meta, property: 'og:description', content: description) if description
-      tags << tag(:meta, property: 'og:image', content: image) if image
+      tags << tag(:meta, property: 'og:image', content: image_url) if image_url
       tags << tag(:meta, property: 'og:type', content: 'website')
       
       # Twitter Card tags
       tags << tag(:meta, name: 'twitter:card', content: 'summary_large_image')
       tags << tag(:meta, name: 'twitter:title', content: title) if title
       tags << tag(:meta, name: 'twitter:description', content: description) if description
-      tags << tag(:meta, name: 'twitter:image', content: image) if image
+      tags << tag(:meta, name: 'twitter:image', content: image_url) if image_url
       
       tags.join("\n").html_safe
     end
