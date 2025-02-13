@@ -5,8 +5,8 @@
     </div>
   <% end %>
   
-  <div class="text-sm text-gray-500 mb-2">
-    <%= pluralize(listing.views_count, 'view') %>
+  <div class="text-sm text-gray-500">
+    <%= number_with_delimiter(listing.views_count) %> views
   </div>
   
   <% if listing.images.attached? %>

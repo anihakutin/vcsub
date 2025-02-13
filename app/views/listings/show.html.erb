@@ -27,7 +27,7 @@
             <% end %>
           </div>
           <div class="text-sm text-gray-500 mt-2">
-            <%= pluralize(@listing.views_count, 'view') %>
+            <%= number_with_delimiter(@listing.views_count) %> views
           </div>
         </div>
         
