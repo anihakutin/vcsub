@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   has_many_attached :images do |attachable|
-    attachable.variant :thumb, resize_to_limit: [300, nil]
+    attachable.variant :thumb, resize_to_limit: [500, nil]
     attachable.variant :medium, resize_to_limit: [800, nil]
     attachable.variant :social, resize_to_limit: [600, 315]
   end
