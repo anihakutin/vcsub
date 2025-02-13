@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :check_profile_completion, unless: -> { params[:action] == 'destroy' }
+  before_action :set_current_user
 
   protected
 
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
        controller_name != 'profiles'
       redirect_to edit_profile_path, notice: "Please complete your profile first"
     end
+  end
+
+  def set_current_user
+    Current.user = current_user
   end
 end 

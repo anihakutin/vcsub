@@ -7,12 +7,25 @@ class Listing < ApplicationRecord
   end
   
   validates :title, :description, :price, :category, :condition, presence: true
-  validates :status, inclusion: { in: %w[available sold] }
+  validates :status, presence: true, inclusion: { in: %w[pending available sold] }
   validate :validate_image_size
   validate :validate_image_type
 
   scope :available, -> { where(status: 'available') }
   scope :sold, -> { where(status: 'sold') }
+  scope :visible, -> { 
+    if Current.user
+      where(user: Current.user).or(where(status: 'available'))
+    else
+      where(status: 'available')
+    end
+  }
+
+  STATUSES = {
+    pending: 'pending',
+    available: 'available',
+    sold: 'sold'
+  }
 
   CATEGORIES = [
     "Office Furniture",
@@ -110,6 +123,10 @@ class Listing < ApplicationRecord
 
   def available?
     status == 'available'
+  end
+
+  def pending?
+    status == 'pending'
   end
 
   private

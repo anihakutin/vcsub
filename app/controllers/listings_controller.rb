@@ -3,15 +3,25 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @listings = Listing.order(created_at: :desc)
-    
-    # Filter by status
-    @listings = case params[:status]
-                when 'sold'
-                  @listings.sold
-                else
-                  @listings.available
-                end
+    @listings = if user_signed_in? && params[:my_listings]
+      # Show all of current user's listings regardless of status
+      current_user.listings.order(created_at: :desc)
+    else
+      # For public view, only show available listings
+      base_query = Listing.where(status: 'available')
+      
+      # If user is signed in, also include their pending listings
+      if user_signed_in?
+        base_query = base_query.or(Listing.where(user: current_user, status: 'pending'))
+      end
+      
+      base_query.order(created_at: :desc)
+    end
+
+    # Apply status filter only for my_listings view
+    if user_signed_in? && params[:my_listings] && params[:status].present?
+      @listings = @listings.where(status: params[:status])
+    end
     
     # Apply other filters if present
     @listings = @listings.where(city: params[:city]) if params[:city].present?
@@ -34,10 +44,11 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = current_user.listings.build(listing_params)
+    @listing = current_user.listings.new(listing_params)
+    @listing.status = 'pending' # Ensure new listings start as pending
 
     if @listing.save
-      redirect_to @listing, notice: 'Your fire sale item has been listed!'
+      redirect_to @listing, notice: "Listing created successfully! It will be reviewed and go live within the next couple of hours."
     else
       render :new, status: :unprocessable_entity
     end
