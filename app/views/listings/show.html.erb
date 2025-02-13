@@ -17,13 +17,18 @@
   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
     <div class="p-8">
       <div class="flex justify-between items-start">
-        <div class="flex items-center gap-4">
-          <h1 class="text-3xl font-bold text-gray-900"><%= @listing.title %></h1>
-          <% if @listing.sold? %>
-            <div class="bg-red-500 text-white px-2 py-1 rounded-md text-sm">
-              Sold
-            </div>
-          <% end %>
+        <div>
+          <div class="flex items-center gap-4">
+            <h1 class="text-3xl font-bold text-gray-900"><%= @listing.title %></h1>
+            <% if @listing.sold? %>
+              <div class="bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+                Sold
+              </div>
+            <% end %>
+          </div>
+          <div class="text-sm text-gray-500 mt-2">
+            <%= pluralize(@listing.views_count, 'view') %>
+          </div>
         </div>
         
         <div class="flex items-center space-x-4">
@@ -62,61 +67,37 @@
       <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="space-y-6">
           <% if @listing.images.attached? %>
-            <div class="relative" id="image-slider">
+            <div class="relative" data-controller="slider">
               <div class="h-[400px] relative bg-gray-100 rounded-lg">
                 <% @listing.images.each_with_index do |image, index| %>
-                  <div class="slide w-full h-full <%= index == 0 ? '' : 'hidden' %>">
+                  <div class="w-full h-full absolute inset-0 <%= index == 0 ? '' : 'hidden' %>"
+                       data-slider-target="slide">
                     <%= image_tag @listing.medium_url(image), 
                         class: "w-full h-full object-contain rounded-lg" %>
                   </div>
                 <% end %>
                 
                 <% if @listing.images.count > 1 %>
-                  <button onclick="changeSlide(-1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-opacity-75">
+                  <button type="button" data-action="slider#prev"
+                          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/75">
                     ❮
                   </button>
-                  <button onclick="changeSlide(1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-opacity-75">
+                  <button type="button" data-action="slider#next"
+                          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/75">
                     ❯
                   </button>
+                  
+                  <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                    <% @listing.images.each do |_image| %>
+                      <button type="button"
+                              class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400"
+                              data-slider-target="dot"
+                              data-action="slider#select"></button>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
-              
-              <% if @listing.images.count > 1 %>
-                <div class="flex justify-center mt-4 gap-2">
-                  <% @listing.images.each_with_index do |image, index| %>
-                    <div class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer dot" 
-                         onclick="currentSlide(<%= index + 1 %>)"></div>
-                  <% end %>
-                </div>
-              <% end %>
             </div>
-
-            <script>
-              let slideIndex = 1;
-              showSlides(slideIndex);
-
-              function changeSlide(n) {
-                showSlides(slideIndex += n);
-              }
-
-              function currentSlide(n) {
-                showSlides(slideIndex = n);
-              }
-
-              function showSlides(n) {
-                const slides = document.querySelectorAll('.slide');
-                const dots = document.querySelectorAll('.dot');
-                
-                if (n > slides.length) slideIndex = 1;
-                if (n < 1) slideIndex = slides.length;
-
-                slides.forEach(slide => slide.classList.add('hidden'));
-                dots.forEach(dot => dot.classList.remove('bg-indigo-600'));
-
-                slides[slideIndex - 1].classList.remove('hidden');
-                dots[slideIndex - 1]?.classList.add('bg-indigo-600');
-              }
-            </script>
           <% end %>
           
           <div class="prose max-w-none">
@@ -188,27 +169,65 @@
 
           <div class="mt-6">
             <h3 class="text-lg font-medium text-gray-900 mb-4">Make an Offer</h3>
-            <div class="flex space-x-4">
+            <div class="w-full grid grid-cols-1 gap-4">
               <% if @listing.user.contact_preference == "email" %>
-                <%= mail_to @listing.user.email,
-                    class: "flex-1 inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50" do %>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                  Contact via Email
-                <% end %>
+                <div class="w-full grid grid-cols-2 gap-2">
+                  <div data-controller="clipboard">
+                    <%= hidden_field_tag :email, @listing.user.email, 
+                        data: { 
+                          clipboard_target: "source"
+                        } %>
+                    <%= button_tag type: "button",
+                        class: "w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50",
+                        data: { 
+                          action: "click->clipboard#copy"
+                        } do %>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                      Copy Email
+                    <% end %>
+                  </div>
+
+                  <%= mail_to @listing.user.email,
+                      class: "w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    Open Email
+                  <% end %>
+                </div>
               <% end %>
 
               <% if @listing.user.contact_preference == "twitter" && @listing.user.twitter_handle.present? %>
-                <%= link_to "https://twitter.com/#{@listing.user.twitter_handle.delete('@')}",
-                    target: "_blank",
-                    class: "flex-1 inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50" do %>
-                  <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                  Message on X
-                <% end %>
+                <div class="w-full grid grid-cols-2 gap-2">
+                  <div data-controller="clipboard">
+                    <%= hidden_field_tag :twitter, @listing.user.twitter_handle, 
+                        data: { 
+                          clipboard_target: "source"
+                        } %>
+                    <%= button_tag type: "button",
+                        class: "w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50",
+                        data: { 
+                          action: "click->clipboard#copy"
+                        } do %>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                      Copy Handle
+                    <% end %>
+                  </div>
+
+                  <%= link_to "https://twitter.com/#{@listing.user.twitter_handle.delete('@')}",
+                      target: "_blank",
+                      class: "w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50" do %>
+                    <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    View Profile
+                  <% end %>
+                </div>
               <% end %>
             </div>
           </div>

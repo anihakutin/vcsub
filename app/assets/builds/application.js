@@ -1,13 +1,6 @@
 (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
-    if (typeof require !== "undefined")
-      return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
-  });
   var __esm = (fn, res) => function __init() {
     return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
   };
@@ -4571,8 +4564,8 @@
     }
   }
   var Dispatcher = class {
-    constructor(application) {
-      this.application = application;
+    constructor(application2) {
+      this.application = application2;
       this.eventListenerMaps = /* @__PURE__ */ new Map();
       this.started = false;
     }
@@ -4827,8 +4820,8 @@
     }
   }
   var Binding = class {
-    constructor(context2, action) {
-      this.context = context2;
+    constructor(context, action) {
+      this.context = context;
       this.action = action;
     }
     get index() {
@@ -5480,8 +5473,8 @@
     }
   };
   var BindingObserver = class {
-    constructor(context2, delegate) {
-      this.context = context2;
+    constructor(context, delegate) {
+      this.context = context;
       this.delegate = delegate;
       this.bindingsByAction = /* @__PURE__ */ new Map();
     }
@@ -5543,8 +5536,8 @@
     }
   };
   var ValueObserver = class {
-    constructor(context2, receiver) {
-      this.context = context2;
+    constructor(context, receiver) {
+      this.context = context;
       this.receiver = receiver;
       this.stringMapObserver = new StringMapObserver(this.element, this);
       this.valueDescriptorMap = this.controller.valueDescriptorMap;
@@ -5636,8 +5629,8 @@
     }
   };
   var TargetObserver = class {
-    constructor(context2, delegate) {
-      this.context = context2;
+    constructor(context, delegate) {
+      this.context = context;
       this.delegate = delegate;
       this.targetsByName = new Multimap();
     }
@@ -5724,9 +5717,9 @@
     return definition ? Object.keys(definition).map((key) => [key, definition[key]]) : [];
   }
   var OutletObserver = class {
-    constructor(context2, delegate) {
+    constructor(context, delegate) {
       this.started = false;
-      this.context = context2;
+      this.context = context;
       this.delegate = delegate;
       this.outletsByName = new Multimap();
       this.outletElementsByName = new Multimap();
@@ -5740,7 +5733,7 @@
           this.setupAttributeObserverForOutlet(outletName);
         });
         this.started = true;
-        this.dependentContexts.forEach((context2) => context2.refresh());
+        this.dependentContexts.forEach((context) => context.refresh());
       }
     }
     refresh() {
@@ -5876,7 +5869,7 @@
     }
     get dependentContexts() {
       const identifiers = this.dependentControllerIdentifiers;
-      return this.router.contexts.filter((context2) => identifiers.includes(context2.identifier));
+      return this.router.contexts.filter((context) => identifiers.includes(context.identifier));
     }
     hasOutlet(element, outletName) {
       return !!this.getOutlet(element, outletName) || !!this.getOutletFromMap(element, outletName);
@@ -6076,8 +6069,8 @@
     };
   }
   var Module = class {
-    constructor(application, definition) {
-      this.application = application;
+    constructor(application2, definition) {
+      this.application = application2;
       this.definition = blessDefinition(definition);
       this.contextsByScope = /* @__PURE__ */ new WeakMap();
       this.connectedContexts = /* @__PURE__ */ new Set();
@@ -6092,24 +6085,24 @@
       return Array.from(this.connectedContexts);
     }
     connectContextForScope(scope) {
-      const context2 = this.fetchContextForScope(scope);
-      this.connectedContexts.add(context2);
-      context2.connect();
+      const context = this.fetchContextForScope(scope);
+      this.connectedContexts.add(context);
+      context.connect();
     }
     disconnectContextForScope(scope) {
-      const context2 = this.contextsByScope.get(scope);
-      if (context2) {
-        this.connectedContexts.delete(context2);
-        context2.disconnect();
+      const context = this.contextsByScope.get(scope);
+      if (context) {
+        this.connectedContexts.delete(context);
+        context.disconnect();
       }
     }
     fetchContextForScope(scope) {
-      let context2 = this.contextsByScope.get(scope);
-      if (!context2) {
-        context2 = new Context(this, scope);
-        this.contextsByScope.set(scope, context2);
+      let context = this.contextsByScope.get(scope);
+      if (!context) {
+        context = new Context(this, scope);
+        this.contextsByScope.set(scope, context);
       }
-      return context2;
+      return context;
     }
   };
   var ClassMap = class {
@@ -6397,8 +6390,8 @@
     }
   };
   var Router = class {
-    constructor(application) {
-      this.application = application;
+    constructor(application2) {
+      this.application = application2;
       this.scopeObserver = new ScopeObserver(this.element, this.schema, this);
       this.scopesByIdentifier = new Multimap();
       this.modulesByIdentifier = /* @__PURE__ */ new Map();
@@ -6445,7 +6438,7 @@
     getContextForElementAndIdentifier(element, identifier) {
       const module = this.modulesByIdentifier.get(identifier);
       if (module) {
-        return module.contexts.find((context2) => context2.element == element);
+        return module.contexts.find((context) => context.element == element);
       }
     }
     proposeToConnectScopeForElementAndIdentifier(element, identifier) {
@@ -6514,9 +6507,9 @@
       this.actionDescriptorFilters = Object.assign({}, defaultActionDescriptorFilters);
     }
     static start(element, schema) {
-      const application = new this(element, schema);
-      application.start();
-      return application;
+      const application2 = new this(element, schema);
+      application2.start();
+      return application2;
     }
     async start() {
       await domReady();
@@ -6550,11 +6543,11 @@
       identifiers.forEach((identifier) => this.router.unloadIdentifier(identifier));
     }
     get controllers() {
-      return this.router.contexts.map((context2) => context2.controller);
+      return this.router.contexts.map((context) => context.controller);
     }
     getControllerForElementAndIdentifier(element, identifier) {
-      const context2 = this.router.getContextForElementAndIdentifier(element, identifier);
-      return context2 ? context2.controller : null;
+      const context = this.router.getContextForElementAndIdentifier(element, identifier);
+      return context ? context.controller : null;
     }
     handleError(error2, message, detail) {
       var _a;
@@ -6908,8 +6901,8 @@
     return `${value}`;
   }
   var Controller = class {
-    constructor(context2) {
-      this.context = context2;
+    constructor(context) {
+      this.context = context;
     }
     static get shouldLoad() {
       return true;
@@ -6964,32 +6957,58 @@
   Controller.outlets = [];
   Controller.values = {};
 
-  // node_modules/@hotwired/stimulus-webpack-helpers/dist/stimulus-webpack-helpers.js
-  function definitionsFromContext(context2) {
-    return context2.keys().map((key) => definitionForModuleWithContextAndKey(context2, key)).filter((value) => value);
-  }
-  function definitionForModuleWithContextAndKey(context2, key) {
-    const identifier = identifierForContextKey(key);
-    if (identifier) {
-      return definitionForModuleAndIdentifier(context2(key), identifier);
+  // app/javascript/controllers/clipboard_controller.js
+  var clipboard_controller_default = class extends Controller {
+    static targets = ["source"];
+    connect() {
+      console.log("Clipboard controller connected");
     }
-  }
-  function definitionForModuleAndIdentifier(module, identifier) {
-    const controllerConstructor = module.default;
-    if (typeof controllerConstructor == "function") {
-      return { identifier, controllerConstructor };
+    copy() {
+      navigator.clipboard.writeText(this.sourceTarget.value).then(() => {
+        const toast = document.createElement("div");
+        toast.className = "fixed bottom-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg z-50";
+        toast.textContent = "Copied to clipboard!";
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2e3);
+      }).catch((err) => console.error("Failed to copy:", err));
     }
-  }
-  function identifierForContextKey(key) {
-    const logicalName = (key.match(/^(?:\.\/)?(.+)(?:[_-]controller\..+?)$/) || [])[1];
-    if (logicalName) {
-      return logicalName.replace(/_/g, "-").replace(/\//g, "--");
+  };
+
+  // app/javascript/controllers/slider_controller.js
+  var slider_controller_default = class extends Controller {
+    static targets = ["slide", "dot"];
+    connect() {
+      if (this.slideTargets.length > 0) {
+        this.showSlide(0);
+      }
     }
-  }
+    prev() {
+      const currentIndex = this.slideTargets.findIndex((slide) => !slide.classList.contains("hidden"));
+      const newIndex = currentIndex <= 0 ? this.slideTargets.length - 1 : currentIndex - 1;
+      this.showSlide(newIndex);
+    }
+    next() {
+      const currentIndex = this.slideTargets.findIndex((slide) => !slide.classList.contains("hidden"));
+      const newIndex = currentIndex >= this.slideTargets.length - 1 ? 0 : currentIndex + 1;
+      this.showSlide(newIndex);
+    }
+    select(event) {
+      const index = this.dotTargets.indexOf(event.currentTarget);
+      this.showSlide(index);
+    }
+    showSlide(index) {
+      this.slideTargets.forEach((slide, i) => {
+        slide.classList.toggle("hidden", i !== index);
+      });
+      this.dotTargets.forEach((dot, i) => {
+        dot.classList.toggle("bg-indigo-600", i === index);
+      });
+    }
+  };
 
   // app/javascript/controllers/index.js
-  window.Stimulus = Application.start();
-  var context = __require.context("./controllers", true, /\.js$/);
-  Stimulus.load(definitionsFromContext(context));
+  var application = Application.start();
+  application.register("clipboard", clipboard_controller_default);
+  application.register("slider", slider_controller_default);
 })();
 //# sourceMappingURL=/assets/application.js.map

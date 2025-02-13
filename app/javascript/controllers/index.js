@@ -3,6 +3,12 @@
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
-window.Stimulus = Application.start()
-const context = require.context("./controllers", true, /\.js$/)
-Stimulus.load(definitionsFromContext(context))
+// Start application
+const application = Application.start()
+
+// Register controllers manually
+import ClipboardController from "./clipboard_controller"
+import SliderController from "./slider_controller"
+
+application.register("clipboard", ClipboardController)
+application.register("slider", SliderController)
